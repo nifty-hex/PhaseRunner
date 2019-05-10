@@ -5,7 +5,7 @@ using UnityEngine;
 public class Firewall : MonoBehaviour {
 
     public GameObject player;
-    
+
     public float speed;
     public float speed_limit;
     float normal_speed;
@@ -17,15 +17,16 @@ public class Firewall : MonoBehaviour {
     public float min_distance;
 
     private Rigidbody2D rigidBody;
+    public Enemy_Spawn en_spawn;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         normal_speed = speed;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         Slow_Time playerScript = player.GetComponent<Slow_Time>();
         distance = player.transform.position.x - transform.position.x;
         if (rigidBody.velocity.x <= speed_limit)
@@ -58,8 +59,11 @@ public class Firewall : MonoBehaviour {
             Debug.Log("Game Over");
         }
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Obstacles" ||
-            collision.gameObject.tag == "Banners" || collision.gameObject.tag == "Enemy_Bullet")
+            collision.gameObject.tag == "Banners" || collision.gameObject.tag == "Enemy_Bullet" ||
+             collision.gameObject.tag == "Charger_Jump_Point" || collision.gameObject.tag == "Player_Bullet")
         {
+            if (collision.gameObject.tag == "Enemy")
+                en_spawn.number_of_enemies--;
             Destroy(collision.gameObject);
         }
     }

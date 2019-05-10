@@ -23,6 +23,7 @@ public class Player_Move : MonoBehaviour
     public bool is_hit;
     public float hit_recover_time;
     float normal_hit_recover_time;
+    
 
     // Use this for initialization
     void Start()
@@ -43,7 +44,6 @@ public class Player_Move : MonoBehaviour
             speed_limit = low_speed_limit;
             if (hit_recover_time <= 0)
             {
-                Debug.Log("Restored");
                 speed_limit = normal_speed_limit;
                 is_hit = false;
                 hit_recover_time = normal_hit_recover_time;
@@ -118,7 +118,7 @@ public class Player_Move : MonoBehaviour
             Debug.Log("CRASH!!!");
             can_double_jump = false;
         }
-        if (collision.gameObject.tag == "Obstacles")
+        if (collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Enemy_Bullet")
         {
             Debug.Log("Hit Obs");
             is_hit = true;

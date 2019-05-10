@@ -12,16 +12,14 @@ public class Enemy_Spawn : MonoBehaviour
     public float spawn_rate_time;
     public float spawn_rate;
     public GameObject player;
-    public GameObject common_enemy_1;
-
-    public float decrease_enemy_rate;
-    float decrease_enemy_rate_time;
+    int enemy_id;
+    public GameObject common_enemy_1; //Drones
+    public GameObject common_enemy_2; //Charger
 
     // Start is called before the first frame update
     void Start()
     {
         spawn_rate_time = 0;
-        decrease_enemy_rate_time = 0;
     }
 
     // Update is called once per frame
@@ -35,18 +33,20 @@ public class Enemy_Spawn : MonoBehaviour
         {
             if (spawn_rate_time > spawn_rate)
             {
-                Instantiate(common_enemy_1, new Vector2(player.transform.position.x + camera_x_offset, 
-                    player.transform.position.y + camera_y_offset), Quaternion.identity);
+                enemy_id = Random.Range(0, 2);
+                if (enemy_id == 0)
+                {
+                    Instantiate(common_enemy_1, new Vector2(player.transform.position.x + camera_x_offset,
+                        player.transform.position.y + camera_y_offset-10), Quaternion.identity);
+                }
+                else if (enemy_id == 1)
+                {
+                    Instantiate(common_enemy_2, new Vector2(player.transform.position.x + camera_x_offset+40,
+                        player.transform.position.y + camera_y_offset+30), Quaternion.identity);
+                }
                 number_of_enemies++;
                 spawn_rate_time = 0;
             }
-        }
-
-        decrease_enemy_rate_time += Time.deltaTime * 100;
-        if (decrease_enemy_rate_time > decrease_enemy_rate)
-        {
-            number_of_enemies--;
-            decrease_enemy_rate_time = 0;
         }
     }
 }

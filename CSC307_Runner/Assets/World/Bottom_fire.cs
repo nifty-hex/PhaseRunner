@@ -7,6 +7,7 @@ public class Bottom_fire : MonoBehaviour {
     public Transform player;
     public float y_offset;
     public float z_offset;
+    public Enemy_Spawn en_spawn;
 
     // Use this for initialization
     void Start () {
@@ -23,6 +24,12 @@ public class Bottom_fire : MonoBehaviour {
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Game Over");
+        }
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Obstacles")
+        {
+            if (collision.gameObject.tag == "Enemy")
+                en_spawn.number_of_enemies--;
+            Destroy(collision.gameObject);
         }
     }
 }

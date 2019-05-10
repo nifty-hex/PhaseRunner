@@ -5,6 +5,7 @@ using UnityEngine;
 public class Map_Generation : MonoBehaviour {
 
     public float player_x_pos = 0;
+    public float player_starting_x_offset;
     public float player_x_offset;
     public float map_x_gap; //21-25
     public float map_x_offset;
@@ -22,6 +23,7 @@ public class Map_Generation : MonoBehaviour {
     public GameObject Window_1;
     public GameObject Window_2;
 
+    public GameObject Med_1;
     public GameObject Long_1;
 
     public GameObject Banner_Big; //1
@@ -44,22 +46,31 @@ public class Map_Generation : MonoBehaviour {
     public GameObject Enemy_1;
 
     public int map_id;
+    float med_scale;
+    float long_scale;
 
     // Use this for initialization
     void Start () {
+
     }
 
     // Update is called once per frame
     void Update () {
         //Platforms
-		if (transform.position.x + player_x_offset > player_x_pos && transform.position.x > 0)
+		if (transform.position.x + player_x_offset > player_x_pos && transform.position.x > player_starting_x_offset)
         {
+            map_id = Random.Range(0, 6);
             map_x_gap = Random.Range(20.5f, 24.5f);
             map_y_pos = Random.Range(0f, 3.1f);
-            map_id = Random.Range(0, 6);
+            
+
             if (map_id == 6)
             {
-                player_x_pos += map_x_gap * 2f;
+                player_x_pos += map_x_gap * med_scale;
+            }
+            else if (map_id == 7)
+            {
+                player_x_pos += map_x_gap * long_scale;
             }
             else
             {
@@ -81,12 +92,17 @@ public class Map_Generation : MonoBehaviour {
             }
             else if (map_id == 6)
             {
-                Instantiate(Long_1, new Vector3(player_x_pos + map_x_offset, map_y_pos + map_y_offset, 0), Quaternion.identity);
+                print("Spawning Med Building");
+                Instantiate(Med_1, new Vector3(player_x_pos + map_x_offset * med_scale, map_y_pos + map_y_offset, 0), Quaternion.identity);
+            }
+            else if (map_id == 7)
+            {
+                Instantiate(Long_1, new Vector3(player_x_pos + map_x_offset * long_scale, map_y_pos + map_y_offset, 0), Quaternion.identity);
             }
 
             //Spawning Banners
             banner_id = Random.Range(1, 12);
-            if (map_id != 6)
+            if (map_id < 6)
             {
                 if (banner_id == 1)
                 {
@@ -154,7 +170,6 @@ public class Map_Generation : MonoBehaviour {
         //Obstacles
         if (Random.Range(0, obstacles_freq) == 0)
         {
-            Debug.Log("Crates");
             Instantiate(obstacle_1, new Vector3(transform.position.x + Random.Range(obstacles_x_offset_min, obstacles_x_offset_max), 
                 map_y_pos + obstacles_y_offset, 0), Quaternion.identity);
         }

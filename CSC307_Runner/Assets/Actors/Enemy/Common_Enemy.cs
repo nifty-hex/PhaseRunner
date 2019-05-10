@@ -20,11 +20,21 @@ public class Common_Enemy : MonoBehaviour
     public Vector3 offset;
     float x_scale;
 
+    private SpriteRenderer spriteRenderer;
+    public Sprite player_center;
+    public Sprite player_close;
+    public Sprite player_far;
+    public float center_distance_from_player;
+    public float medium_distance_from_player;
+
+    public Enemy_Spawn en_spawn;
+    public Animator explod_anime;
+
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         x_scale = transform.localScale.x;
-        print("0.62");
         fireRateTime = 0;
         rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -45,7 +55,6 @@ public class Common_Enemy : MonoBehaviour
             fireRateTime += Time.deltaTime * 100;
             if (fireRateTime > fireRate)
             {
-                print("shoot");
                 Instantiate(bullet, new Vector2(transform.position.x, transform.position.y + firePoint_y_offset), Quaternion.identity);
                 fireRateTime = 0;
             }
@@ -54,6 +63,20 @@ public class Common_Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Mathf.Abs(transform.position.x-player.transform.position.x) < center_distance_from_player)
+        {
+            spriteRenderer.sprite = player_close;
+        }
+        else if (Mathf.Abs(transform.position.x - player.transform.position.x) < medium_distance_from_player)
+        {
+            spriteRenderer.sprite = player_close;
+        }
+        else
+        {
+            spriteRenderer.sprite = player_far;
+        }
+
+
         if (transform.position.x > player.transform.position.x)
         {
             Vector3 lTemp = transform.localScale;
@@ -69,6 +92,7 @@ public class Common_Enemy : MonoBehaviour
 
         if (hp <= 0)
         {
+            en_spawn.number_of_enemies--;
             Destroy(gameObject);
         }
         Vector3 desiredPosition = player.transform.position + offset;

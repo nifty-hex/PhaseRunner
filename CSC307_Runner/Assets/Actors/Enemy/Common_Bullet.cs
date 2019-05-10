@@ -53,5 +53,12 @@ public class Common_Bullet : MonoBehaviour
             Destroy(GameObject.Find("Common_Bullet(Clone)"));
         }
     }
+
+    void OnBecameInvisible()
+    {
+        if (gameObject.name == "Common_Bullet(Clone)")
+            Destroy(gameObject);
+    }
 }
+
 
