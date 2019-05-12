@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb2d;
     public GameObject gun;
     public float rotateSpeed = 400f;
+    public int bulletType = 0; //1 home, 2 explode (explode is dangerous)
 
     // Use this for initialization
     void Start()
@@ -30,7 +31,7 @@ public class Bullet : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = transform.right * speed;
-        if (transform.localScale.x <= 5f)
+        if (bulletType == 1)
         {
             Transform target = FindClosestEnemy().transform;
             Vector2 direction = (Vector2)target.position - rb2d.position;
@@ -44,49 +45,58 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.gameObject.SetActive(false);//or destroy whichever works better
-
-            if (transform.localScale.x >= 10f)
-            {
-                for (int a = 0; a < 8; a++)
-                {
-                    GameObject bullet = Instantiate(this.gameObject, transform.position, transform.rotation);
-                    bullet.transform.localScale = new Vector3(bullet.transform.localScale.x - 5f, bullet.transform.localScale.y - 5f, bullet.transform.localScale.z);
-                    bullet.GetComponent<Rigidbody2D>().rotation += a * (360 / 8);
-                }
-            }
-            gameObject.SetActive(false); //turn off the bullet
-        }
-        else
-        {
-
-        }
-    }
+    
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Obstacles")
+        if (collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Enemy_Bullet")
         {
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == "Banners")
+        Destroy(gameObject);
+
+        /*if (bulletType == 2)
         {
-            Destroy(gameObject);
-        }
+            for (int a = 0; a < 8; a++)
+            {
+                GameObject bullet = Instantiate(this.gameObject, transform.position, transform.rotation);
+                Bullet_Script bulletScript = bullet.GetComponent<Bullet_Script>();
+                bulletScript.bulletType = 0;
+                bullet.GetComponent<Rigidbody2D>().rotation += a * (360 / 8);
+            }
+        }*/
     }
 
     public GameObject FindClosestEnemy()
     {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] gos, gos1, gos2;
+        gos = GameObject.FindGameObjectsWithTag("Enemy_Bullet");
+        gos1 = GameObject.FindGameObjectsWithTag("Enemy");
+        gos2 = GameObject.FindGameObjectsWithTag("Obstacles");
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        foreach (GameObject go in gos1)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        foreach (GameObject go in gos2)
         {
             Vector3 diff = go.transform.position - position;
             float curDistance = diff.sqrMagnitude;
