@@ -46,8 +46,8 @@ public class Map_Generation : MonoBehaviour {
     public GameObject Enemy_1;
 
     public int map_id;
-    float med_scale;
-    float long_scale;
+    public float med_scale;
+    public float long_scale;
 
     // Use this for initialization
     void Start () {
@@ -59,7 +59,7 @@ public class Map_Generation : MonoBehaviour {
         //Platforms
 		if (transform.position.x + player_x_offset > player_x_pos && transform.position.x > player_starting_x_offset)
         {
-            map_id = Random.Range(0, 6);
+            map_id = Random.Range(0, 8);
             map_x_gap = Random.Range(20.5f, 24.5f);
             map_y_pos = Random.Range(0f, 3.1f);
             
@@ -92,12 +92,12 @@ public class Map_Generation : MonoBehaviour {
             }
             else if (map_id == 6)
             {
-                print("Spawning Med Building");
-                Instantiate(Med_1, new Vector3(player_x_pos + map_x_offset * med_scale, map_y_pos + map_y_offset, 0), Quaternion.identity);
+                //print("Spawning Med Building");
+                Instantiate(Med_1, new Vector3(player_x_pos + map_x_offset, map_y_pos + map_y_offset, 0), Quaternion.identity);
             }
             else if (map_id == 7)
             {
-                Instantiate(Long_1, new Vector3(player_x_pos + map_x_offset * long_scale, map_y_pos + map_y_offset, 0), Quaternion.identity);
+                Instantiate(Long_1, new Vector3(player_x_pos + map_x_offset, map_y_pos + map_y_offset, 0), Quaternion.identity);
             }
 
             //Spawning Banners
@@ -163,7 +163,11 @@ public class Map_Generation : MonoBehaviour {
 
             if (map_id == 6)
             {
-                player_x_pos += map_x_gap * 1;
+                player_x_pos += map_x_gap * med_scale;
+            }
+            if (map_id == 7)
+            {
+                player_x_pos += map_x_gap * long_scale/2;
             }
         }
 
