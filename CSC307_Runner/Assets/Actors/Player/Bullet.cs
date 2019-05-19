@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     public float speed;
     public float life_time;
     private Rigidbody2D rb2d;
-    public GameObject gun;
     public float rotateSpeed = 400f;
     public int bulletType = 0; //1 home, 2 explode (explode is dangerous)
 
@@ -16,6 +15,9 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        Vector3 copy = rb2d.velocity;
+        copy += transform.right * speed;
+        rb2d.velocity = copy;
     }
 
     void Update()
@@ -30,7 +32,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        rb2d.velocity = transform.right * speed;
+        //rb2d.velocity = transform.right * speed;
+        //rb2d.AddForce(this.transform.right * speed * 1000);
         if (bulletType == 1)
         {
             Transform target = FindClosestEnemy().transform;
@@ -45,7 +48,7 @@ public class Bullet : MonoBehaviour
     {
         Destroy(gameObject);
     }
-    
+
 
     void OnCollisionEnter2D(Collision2D collision)
     {
