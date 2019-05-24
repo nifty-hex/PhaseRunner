@@ -99,7 +99,7 @@ public class Player_shoot : MonoBehaviour
             gunType = 2;
         if (Input.GetKeyDown(KeyCode.Alpha2) && ammo[1] != 0)
             gunType = 1;
-        Debug.Log("Changing type");
+        //Debug.Log("Changing type");
     }
     void regularGun()
     {
