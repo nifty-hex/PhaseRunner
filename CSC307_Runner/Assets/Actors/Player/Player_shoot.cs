@@ -8,11 +8,12 @@ public class Player_shoot : MonoBehaviour
 
     //public GameObject player;
     public GameObject bulletPrefab;
+    public GameObject player;
     public float fireRate = 0.5f;
     public int gunType = 0;
     public int ammoCount; //-1 = infinite bullets
     private float nextFire;
-    private int totalBulletTypes = 4; //assume at least 2
+    private int totalBulletTypes = 3; //assume at least 2
     private int[] ammo;
     // Use this for initialization
     void Start()
@@ -69,9 +70,9 @@ public class Player_shoot : MonoBehaviour
             case 2:
                 shotGun();
                 break;
-            case 3:
-                homingGun();
-                break;
+            //    case 3:
+            //      homingGun();
+            //    break;
             /*case 4:
                 if (Input.GetMouseButton(0) && nextFire >= fireRate)
                 {
@@ -93,19 +94,20 @@ public class Player_shoot : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             gunType = 0;
-        if (Input.GetKeyDown(KeyCode.Alpha4) && ammo[3] != 0)
-            gunType = 3;
+        //if (Input.GetKeyDown(KeyCode.Alpha4) && ammo[3] != 0)
+        //  gunType = 3;
         if (Input.GetKeyDown(KeyCode.Alpha3) && ammo[2] != 0)
             gunType = 2;
         if (Input.GetKeyDown(KeyCode.Alpha2) && ammo[1] != 0)
             gunType = 1;
-        Debug.Log("Changing type");
+        //Debug.Log("Changing type");
     }
     void regularGun()
     {
         if (Input.GetMouseButton(0) && nextFire >= fireRate)
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
             nextFire = 0;
         }
     }
@@ -114,7 +116,8 @@ public class Player_shoot : MonoBehaviour
         float fasterFireRate = fireRate / 2;
         if (Input.GetMouseButton(0) && nextFire >= fasterFireRate && ammo[gunType] != 0)
         {
-            Instantiate(bulletPrefab, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
             nextFire = 0;
             if (ammo[gunType] != -1)
                 ammo[gunType]--;
@@ -126,14 +129,26 @@ public class Player_shoot : MonoBehaviour
         int bulletCount = 3; //minimum 2
         if (Input.GetMouseButton(0) && nextFire >= fireRate && ammo[gunType] != 0)
         {
+            Debug.Log("Shotgun");
+
             int b = bulletCount;
             if (b > ammo[gunType] && ammo[gunType] != -1)
                 b = ammo[gunType];
             for (int a = 0; a < b; a++)
             {
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                //Quaternion x = transform.rotation;
                 if (b != 1)
-                    bullet.GetComponent<Rigidbody2D>().rotation += -shootAngle/2 + shootAngle * a / (b-1);
+                {
+                    Debug.Log("rotation value: " + (-shootAngle / 2 + shootAngle * a / (b - 1)));
+                    //x = new Quaternion(0, 0, (-shootAngle / 2 + shootAngle * a / (b - 1)), 0 );
+                    //bullet.GetComponent<Rigidbody2D>().rotation += -shootAngle / 2 + shootAngle * a / (b - 1);
+                    /*x = Quaternion.Euler(/*-shootAngle / 2 + shootAngle * a / (b - 1) + transform.rotation.x
+                        , transform.rotation.y, transform.rotation.z);*/
+                }
+                GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
+                bullet.transform.Rotate(0, 0, -shootAngle / 2 + shootAngle * a / (b - 1));
+                Debug.Log(bullet.GetComponent<Rigidbody2D>().rotation);
             }
             nextFire = 0;
             if (ammo[gunType] != -1)
@@ -145,6 +160,7 @@ public class Player_shoot : MonoBehaviour
         if (Input.GetMouseButton(0) && nextFire >= fireRate && ammo[gunType] != 0)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.bulletType = 1;
             nextFire = 0;

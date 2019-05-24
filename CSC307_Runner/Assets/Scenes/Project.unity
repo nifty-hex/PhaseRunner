@@ -376,9 +376,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1059325442}
   speed: 40
-  speed_limit: 50
-  high_speed: 70
-  low_speed: 45
+  speed_limit: 45
+  high_speed: 60
+  low_speed: 40
   slow_speed_limit: 20
   distance: 0
   max_distance: 15
@@ -36073,7 +36073,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517245517}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b1ed7215aae4484eb26a5ece83c6499, type: 3}
   m_Name: 
@@ -39040,12 +39040,12 @@ PrefabInstance:
     - target: {fileID: 311630921269188667, guid: 8a541491b559f9b40bd69da19a2efd67,
         type: 3}
       propertyPath: med_scale
-      value: 1.15
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 311630921269188667, guid: 8a541491b559f9b40bd69da19a2efd67,
         type: 3}
       propertyPath: long_scale
-      value: 1.9
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 311630919848872223, guid: 8a541491b559f9b40bd69da19a2efd67,
         type: 3}
