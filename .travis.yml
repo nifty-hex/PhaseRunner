@@ -7,8 +7,8 @@ env:
 services:
 - docker
 before_install:
-- openssl aes-256-cbc -K $encrypted_f01b1606ddb9_key -iv $encrypted_f01b1606ddb9_iv
-  -in Unity_v2018.x.ulf.enc -out ./Unity_v2018.x.ulf -d
+- openssl aes-256-cbc -K $encrypted_f01b1606ddb9_key -iv 
+  $encrypted_f01b1606ddb9_iv -in Unity_v2018.x.ulf.enc -out ./Unity_v2018.x.ulf -d
 - export UNITY_LICENSE_CONTENT=`cat Unity_v2018.x.ulf`
 - rm Unity_v2018.x.ulf
 - docker pull $IMAGE_NAME
@@ -39,7 +39,18 @@ jobs:
         - "./Builds/"
   - stage: build
     env: BUILD_TARGET=StandaloneWindows64
-    script: ./ci/docker_build.sh
+    script: 
+      - "chmod +x ./ci/* && ./ci/docker_build.sh"
+      - "sudo chmod -R 777 ./Builds/"
+      - "cd ./Builds/"
+      - "zip -r StandaloneWindows64.zip ./StandalineWindows64/"
+    deploy:
+      provider: releases
+      api_key: $GITHUB_API_KEY
+      file: StandaloneWindows64.zip
+      skip_cleanup: true
+      #on:
+      #:  tags: true
     addons:
       artifacts:
         target_paths:
