@@ -54,8 +54,9 @@ public class Map_Generation : MonoBehaviour {
     // Use this for initialization
     void Start () {
 #if UNITY_STANDALONE || UNITY_WEBPLAYER
-	    	canvas=GameObject.Find("CanvasMobile");
-		canvas.SetActive(false);
+	    canvas=GameObject.Find("CanvasMobile");
+	    if(canvas)	
+	    	canvas.SetActive(false);
 #endif
     }
 

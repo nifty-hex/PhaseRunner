@@ -94,10 +94,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1648408120256892, guid: 9031082fc1710d6439896bc76dedd5a5,
     type: 3}
+  player: {fileID: 311630921269188659}
   fireRate: 0.5
   gunType: 0
-  ammo: 100
-  inventory: 0
+  ammoCount: 0
 --- !u!1 &311630920852306673
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +248,7 @@ MonoBehaviour:
   Platform_2: {fileID: 0}
   Window_1: {fileID: 0}
   Window_2: {fileID: 0}
+  Med_1: {fileID: 0}
   Long_1: {fileID: 0}
   Banner_Big: {fileID: 0}
   Banner_Coke: {fileID: 0}
@@ -265,7 +266,10 @@ MonoBehaviour:
   obstacle_1: {fileID: 0}
   obstacle_2: {fileID: 0}
   Enemy_1: {fileID: 0}
+  canvas: {fileID: 0}
   map_id: 0
+  med_scale: 0
+  long_scale: 0
 --- !u!114 &311630921269188666
 MonoBehaviour:
   m_ObjectHideFlags: 0
