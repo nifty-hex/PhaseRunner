@@ -1,6 +1,7 @@
+
 #!/usr/bin/env bash
 
-set -e
+#set -e
 
 docker run \
   -e UNITY_LICENSE_CONTENT \
