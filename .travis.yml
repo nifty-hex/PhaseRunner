@@ -40,7 +40,18 @@ jobs:
         - "./Builds/"
   - stage: build
     env: BUILD_TARGET=StandaloneWindows64
-    script: ./ci/docker_build.sh
+    script: 
+      - "chmod +x ./ci/* && ./ci/docker_build.sh"
+      - "sudo chmod -R 777 ./Builds/"
+      - "cd ./Builds/"
+      - "zip -r StandaloneWindows64.zip ./StandalineWindows64/"
+    deploy:
+      provider: releases
+      api_key: $GITHUB_API_KEY
+      file: StandaloneWindows64.zip
+      skip_cleanup: true
+      #on:
+      #:  tags: true
     addons:
       artifacts:
         target_paths:
