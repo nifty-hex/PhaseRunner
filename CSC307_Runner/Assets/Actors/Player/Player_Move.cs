@@ -13,22 +13,24 @@ public class Player_Move : MonoBehaviour
     float normal_speed_limit;
     public float jump_force;
     public float double_jump_force;
-    public bool can_move;
-    public bool can_jump;
-    public bool can_double_jump;
+    private bool can_move;
+    private bool can_jump;
+    private bool can_double_jump;
     public float standard_gravity;
     public float gliding_gravity;
     private Rigidbody2D rigidBody;
 
-    public bool is_hit;
+    private bool is_hit;
     public float hit_recover_time;
     float normal_hit_recover_time;
+
+    public Animator animator;
     
 
     // Use this for initialization
     void Start()
     {
-        //Debug.Log("Version 0.0.128");
+        Debug.Log("Version 0.0.133");
         rigidBody = GetComponent<Rigidbody2D>();
         standard_gravity = rigidBody.gravityScale;
         normal_speed_limit = speed_limit;
@@ -55,7 +57,7 @@ public class Player_Move : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene(1);
         }
         if (can_move)
         {
@@ -81,12 +83,15 @@ public class Player_Move : MonoBehaviour
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
                 rigidBody.AddForce(new Vector2(0, jump_force), ForceMode2D.Impulse);
                 can_jump = false;
+                animator.SetBool("jump", true);
             }
             else if (Input.GetKeyDown(KeyCode.Space) && can_jump == false && can_double_jump)
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
                 rigidBody.AddForce(new Vector2(0, double_jump_force), ForceMode2D.Impulse);
                 can_double_jump = false;
+                animator.SetBool("doublejump", true);
+
             }
 
             //Gliding
@@ -112,6 +117,8 @@ public class Player_Move : MonoBehaviour
             can_move = true;
             can_double_jump = true;
             rigidBody.gravityScale = standard_gravity;
+            animator.SetBool("jump", false);
+            animator.SetBool("doublejump", false);
         }
         if (collision.gameObject.tag == "Wall")
         {
