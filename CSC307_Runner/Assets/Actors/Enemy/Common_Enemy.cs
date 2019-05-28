@@ -90,7 +90,7 @@ public class Common_Enemy : MonoBehaviour
             transform.localScale = lTemp;
         }
 
-        if (hp <= 0 && (gameObject.name == "Common_Enemy(Clone)"))
+        if (hp <= 0)
         {
             en_spawn.number_of_enemies--;
             Destroy(gameObject);

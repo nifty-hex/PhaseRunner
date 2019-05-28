@@ -56,7 +56,7 @@ public class Firewall : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("Game Over");
+            Debug.Log("Game Over");
         }
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Obstacles" ||
             collision.gameObject.tag == "Banners" || collision.gameObject.tag == "Enemy_Bullet" ||

@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    // The Update is called once per frame
+    // Update is called once per frame
     private void FixedUpdate()
     {
         //rb2d.velocity = transform.right * speed;
