@@ -175,7 +175,7 @@ public class Map_Generation : MonoBehaviour {
         if (Random.Range(0, obstacles_freq) == 0)
         {
             Instantiate(obstacle_1, new Vector3(transform.position.x + Random.Range(obstacles_x_offset_min, obstacles_x_offset_max), 
-                map_y_pos + obstacles_y_offset, 0), Quaternion.identity);
+                map_y_pos + obstacles_y_offset, 0), Quaternion.Euler(0, 0, 40));
         }
 
     }
