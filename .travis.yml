@@ -45,7 +45,7 @@ jobs:
       - "chmod +x ./ci/* && ./ci/docker_build.sh"
       - "sudo chmod -R 777 ./Builds/"
       - "cd ./Builds/"
-      - "zip -r StandaloneWindows64.zip ./StandalineWindows64/"
+      - "zip -r StandaloneWindows64.zip ./StandaloneWindows64/"
     deploy:
       provider: releases
       api_key: $GITHUB_API_KEY
