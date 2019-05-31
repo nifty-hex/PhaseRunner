@@ -9,6 +9,6 @@ docker run \
   -e UNITY_USERNAME \
   -e UNITY_PASSWORD \
   -w /project/ \
-  -v $(pwd)/CSC307_Runner:/project/ \
+  -v $(pwd):/project/ \
   $IMAGE_NAME \
   /bin/bash -c "/project/ci/before_script.sh && /project/ci/test.sh"
