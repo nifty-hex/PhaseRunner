@@ -9,17 +9,57 @@ public class Player_Health : MonoBehaviour {
     public int health;
     public I_Frames i_frame;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public float time_slowness = 0.5f;
+    public float time_fix_mul;
+
+    public GameObject bg;
+    public float change_speed;
+    public float bg_y_offset;
+    Color tmp;
+    bool die = false;
+
+    public float time_till_scene_change = 3f;
+
+    // Use this for initialization
+    void Start () {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 		if (health <= 0)
         {
-            Debug.Log("Game Over");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (Time.timeScale > time_slowness)
+            {
+                Time.timeScale -= (Time.deltaTime * time_fix_mul);
+            }
+
+            tmp = bg.GetComponent<SpriteRenderer>().color;
+
+            if (die == false)
+            {
+                tmp = Color.red;
+                tmp.a = 0;
+                die = true;
+            }
+            
+            if (tmp.a < 1f)
+            {
+                tmp.a += change_speed;
+            }
+            bg.GetComponent<SpriteRenderer>().color = tmp;
+
+            if (tmp.a >= 1f)
+            {
+                if (time_till_scene_change > 0)
+                {
+                    time_till_scene_change -= Time.deltaTime;
+                }
+                else
+                {
+                    SceneManager.LoadScene(2);
+                }
+            }
         }
 	}
 
@@ -31,7 +71,6 @@ public class Player_Health : MonoBehaviour {
             {
                 health--;
                 i_frame.invin = true;
-                Debug.Log("Ouch");
             }
         }
         if (collision.gameObject.tag == "Enemy_Bullet")

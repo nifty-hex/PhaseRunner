@@ -65,7 +65,6 @@ public class Slow_Time : MonoBehaviour {
         if (is_time_slow)
         {
             tmp = bg.GetComponent<SpriteRenderer>().color;
-
             if (tmp.a < bw_alpha)
             {
                 tmp.a += change_speed;

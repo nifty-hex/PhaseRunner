@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Boomer_Enemy : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player;
     public GameObject splatters;
-    public Enemy_Spawn en_spawn;
+    private Enemy_Spawn en_spawn;
 
     public int max_splatters;
     public int hp;
@@ -21,6 +21,8 @@ public class Boomer_Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        en_spawn = GameObject.Find("Main Camera").GetComponent<Enemy_Spawn>();
+        player = GameObject.Find("Player");
         rigidBody = GetComponent<Rigidbody2D>();
     }
 

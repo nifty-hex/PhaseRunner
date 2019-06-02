@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bf38b88e73f163e41bcadd7a62480fb1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - shoot: {instanceID: 0}
+  - pistol: {fileID: 21300000, guid: 3fd86f1f98cd9304d99d60c6e290d337, type: 3}
+  - machine_gun: {instanceID: 0}
+  - shotgun: {instanceID: 0}
+  - railgun: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

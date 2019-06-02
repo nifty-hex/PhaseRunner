@@ -5,6 +5,7 @@ using UnityEngine;
 public class Firewall : MonoBehaviour {
 
     public GameObject player;
+    public Player_Health hp;
 
     public float speed;
     public float speed_limit;
@@ -56,7 +57,7 @@ public class Firewall : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            //Debug.Log("Game Over");
+            hp.health = 0;
         }
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Obstacles" ||
             collision.gameObject.tag == "Banners" || collision.gameObject.tag == "Enemy_Bullet" ||

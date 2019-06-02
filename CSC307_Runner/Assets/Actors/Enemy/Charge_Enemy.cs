@@ -8,16 +8,16 @@ public class Charge_Enemy : MonoBehaviour
     public int hp;
     public float speed;
     public float speed_limit;
-    public GameObject jump_point;
     public float jump_force;
 
-    public Enemy_Spawn en_spawn;
+    private Enemy_Spawn en_spawn;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        en_spawn = GameObject.Find("Main Camera").GetComponent<Enemy_Spawn>();
     }
 
     // Update is called once per frame
@@ -28,6 +28,11 @@ public class Charge_Enemy : MonoBehaviour
             if (rigidBody.velocity.x > speed_limit)
             {
                 rigidBody.AddForce(new Vector2(-speed, 0), ForceMode2D.Impulse);
+            }
+            if (speed == 0)
+            {
+                print("Dead by Stop");
+                Destroy(gameObject);
             }
         }
     }
@@ -51,6 +56,11 @@ public class Charge_Enemy : MonoBehaviour
         {
             hp--;
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag == "Wall")
+        {
+            en_spawn.number_of_enemies--;
+            Destroy(gameObject);
         }
     }
 }

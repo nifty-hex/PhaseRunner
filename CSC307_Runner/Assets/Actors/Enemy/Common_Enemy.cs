@@ -9,8 +9,10 @@ public class Common_Enemy : MonoBehaviour
     public float x_speed_limit;
     public float y_speed;
 
-    public GameObject player;
+    private GameObject player;
     public GameObject bullet;
+    public GameObject enemyExplosion;
+    public GameObject enemyFlash;
 
     public float fireRateTime;
     public float fireRate;
@@ -27,12 +29,13 @@ public class Common_Enemy : MonoBehaviour
     public float center_distance_from_player;
     public float medium_distance_from_player;
 
-    public Enemy_Spawn en_spawn;
-    public Animator explod_anime;
+    private Enemy_Spawn en_spawn;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        en_spawn = GameObject.Find("Main Camera").GetComponent<Enemy_Spawn>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         x_scale = transform.localScale.x;
         fireRateTime = 0;
@@ -56,6 +59,7 @@ public class Common_Enemy : MonoBehaviour
             if (fireRateTime > fireRate)
             {
                 Instantiate(bullet, new Vector2(transform.position.x, transform.position.y + firePoint_y_offset), Quaternion.identity);
+                Instantiate(enemyFlash, new Vector2(transform.position.x, transform.position.y + firePoint_y_offset), Quaternion.identity);
                 fireRateTime = 0;
             }
         }
@@ -93,6 +97,7 @@ public class Common_Enemy : MonoBehaviour
         if (hp <= 0 && (gameObject.name == "Common_Enemy(Clone)"))
         {
             en_spawn.number_of_enemies--;
+            Instantiate(enemyExplosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
         Vector3 desiredPosition = player.transform.position + offset;

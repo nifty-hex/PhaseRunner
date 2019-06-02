@@ -14,6 +14,7 @@ public class Smooth_Camera : MonoBehaviour {
 
     void FixedUpdate()
     {
+        Application.targetFrameRate = 60;
         if (Input.GetKey("q"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);

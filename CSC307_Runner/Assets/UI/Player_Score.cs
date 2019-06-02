@@ -8,6 +8,7 @@ public class Player_Score : MonoBehaviour
     public GameObject player;
     public Player_Health player_hp;
     public static int player_score;
+    public int score2; //non static use
     Text ScoreText;
     float start_x;
 
@@ -30,6 +31,7 @@ public class Player_Score : MonoBehaviour
         if (player_hp.health > 0)
         {
             player_score = (int)(player.transform.position.x - start_x);
+            score2 = player_score;
         }
     }
 }

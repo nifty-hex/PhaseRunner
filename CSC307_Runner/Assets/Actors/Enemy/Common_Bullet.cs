@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Common_Bullet : MonoBehaviour
 { 
-    public GameObject player;
-    public GameObject player_offset;
+    private GameObject player;
+    private GameObject player_offset;
     float speed;
     public float clone_speed;
     public float life_time;
@@ -16,6 +16,8 @@ public class Common_Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        player_offset = GameObject.Find("Aim_At");
         transform.LookAt(player_offset.transform);
         temp_life = life_time;
         rigidBody = GetComponent<Rigidbody2D>();
