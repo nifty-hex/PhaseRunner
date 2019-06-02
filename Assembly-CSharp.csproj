@@ -85,6 +85,7 @@
     <Compile Include="Assets\UI\Player_Score.cs" />
     <Compile Include="Assets\UI\Player_ST_UI.cs" />
     <Compile Include="Assets\UI\Weapon_UI.cs" />
+    <Compile Include="Assets\WarningScene.cs" />
     <Compile Include="Assets\World\Back_Scroll.cs" />
     <Compile Include="Assets\World\Bottom_fire.cs" />
     <Compile Include="Assets\World\Building_Wall.cs" />
