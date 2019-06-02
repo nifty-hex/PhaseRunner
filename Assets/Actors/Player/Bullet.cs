@@ -54,6 +54,10 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Enemy_Bullet")
         {
+            if(collision.gameObject.name == "Window_1" || collision.gameObject.name == "Window_2")
+            {
+                SoundManagerScript.PlaySound("glass break");
+            }
             Destroy(collision.gameObject);
         }
         Destroy(gameObject);

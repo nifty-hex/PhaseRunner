@@ -39,6 +39,7 @@ public class Player_Health : MonoBehaviour {
 
             if (die == false)
             {
+                SoundManagerScript.PlaySound("player die");
                 tmp = Color.red;
                 tmp.a = 0;
                 die = true;
@@ -70,6 +71,7 @@ public class Player_Health : MonoBehaviour {
         {
             if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy_Bullet" || collision.gameObject.tag == "Obstacles")
             {
+                SoundManagerScript.PlaySound("hurt sound");
                 health--;
                 i_frame.invin = true;
             }
@@ -87,6 +89,7 @@ public class Player_Health : MonoBehaviour {
             if (collision.gameObject.tag == "Enemy_Bullet")
             {
                 health--;
+                SoundManagerScript.PlaySound("hurt sound");
                 i_frame.invin = true;
                 Debug.Log("Ouch");
             }

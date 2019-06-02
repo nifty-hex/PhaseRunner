@@ -53,6 +53,7 @@ public class Boomer_Enemy : MonoBehaviour
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
             drop_item.will_drop = true;
+            SoundManagerScript.PlaySound("Explosion");
             Destroy(gameObject);
         }
         if (drop_item.will_drop)
@@ -68,6 +69,7 @@ public class Boomer_Enemy : MonoBehaviour
             for (int i = 0; i < max_splatters; i++)
             {
                 Instantiate(splatters, transform.position, Quaternion.identity);
+                SoundManagerScript.PlaySound("super pew 2");
             }
             hp--;
         }
