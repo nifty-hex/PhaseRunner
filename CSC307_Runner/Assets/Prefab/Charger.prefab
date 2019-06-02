@@ -134,6 +134,6 @@ MonoBehaviour:
   hp: 3
   speed: 0.6
   speed_limit: -5
-  jump_point: {fileID: 0}
   jump_force: 12
-  en_spawn: {fileID: 0}
+  enemyExplosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
+    type: 3}

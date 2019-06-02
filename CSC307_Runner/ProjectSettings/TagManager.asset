@@ -13,6 +13,7 @@ TagManager:
   - Player_Bullet
   - Enemy_Bullet
   - Charger_Jump_Point
+  - Item_Pickup
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Enemy_Bullet_Lay
   - Charger_Jump_Lay
   - Charger_Lay
-  - 
+  - Item_Pickup
   - 
   - 
   - 

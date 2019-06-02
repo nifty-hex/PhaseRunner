@@ -97,6 +97,7 @@ public class Map_Generation : MonoBehaviour {
             }
             else if (map_id == 7)
             {
+                //print("Spawning Long Building");
                 Instantiate(Long_1, new Vector3(player_x_pos + map_x_offset, map_y_pos + map_y_offset, 0), Quaternion.identity);
             }
 

@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4394335169345314050}
-  explosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
+  explosion: {fileID: 7320960408847068331, guid: 5a09e0fb520af5546ae6a7cb99c5e169,
     type: 3}
 --- !u!50 &3932695458755697459
 Rigidbody2D:

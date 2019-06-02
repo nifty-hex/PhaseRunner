@@ -7,6 +7,8 @@ public class Boomer_Enemy : MonoBehaviour
     private GameObject player;
     public GameObject splatters;
     private Enemy_Spawn en_spawn;
+    public GameObject enemyExplosion;
+
 
     public int max_splatters;
     public int hp;
@@ -17,11 +19,14 @@ public class Boomer_Enemy : MonoBehaviour
 
     private Rigidbody2D rigidBody;
 
+    private Drop_Items drop_item;
+
 
     // Start is called before the first frame update
     void Start()
     {
         en_spawn = GameObject.Find("Main Camera").GetComponent<Enemy_Spawn>();
+        drop_item = GameObject.Find("Item_Spawn").GetComponent<Drop_Items>();
         player = GameObject.Find("Player");
         rigidBody = GetComponent<Rigidbody2D>();
     }
@@ -46,7 +51,13 @@ public class Boomer_Enemy : MonoBehaviour
         if (hp <= 0 && (gameObject.name == "Boomer(Clone)"))
         {
             en_spawn.number_of_enemies--;
+            Instantiate(enemyExplosion, transform.position, transform.rotation);
+            drop_item.will_drop = true;
             Destroy(gameObject);
+        }
+        if (drop_item.will_drop)
+        {
+            drop_item.spawn_point.position = transform.position;
         }
     }
 

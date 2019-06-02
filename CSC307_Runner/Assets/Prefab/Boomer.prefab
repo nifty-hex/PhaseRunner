@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splatters: {fileID: 6292453372332451355, guid: 717c8c0be6e9c5f41bcab26177710f2f,
     type: 3}
+  enemyExplosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
+    type: 3}
   max_splatters: 5
   hp: 3
   x_speed: 0.5

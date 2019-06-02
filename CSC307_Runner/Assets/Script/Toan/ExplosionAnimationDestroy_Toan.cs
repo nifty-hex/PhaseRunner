@@ -8,6 +8,6 @@ public class ExplosionAnimationDestroy_Toan : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length + 0.1f);
+        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length + 0.07f);
     }
 }

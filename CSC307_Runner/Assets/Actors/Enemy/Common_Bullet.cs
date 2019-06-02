@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class Common_Bullet : MonoBehaviour
 { 
-    private GameObject player;
+    //private GameObject player;
     private GameObject player_offset;
     float speed;
     public float clone_speed;
     public float life_time;
     public float x_velocity_limit;
     float temp_life;
-    private Rigidbody2D rigidBody;
+    //private Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player");
+        //player = GameObject.Find("Player");
         player_offset = GameObject.Find("Aim_At");
         transform.LookAt(player_offset.transform);
         temp_life = life_time;
-        rigidBody = GetComponent<Rigidbody2D>();
+        //rigidBody = GetComponent<Rigidbody2D>();
         if (gameObject.name == "Common_Bullet(Clone)")
         {
             speed = clone_speed;

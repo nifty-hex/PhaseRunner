@@ -13,6 +13,7 @@ public class Common_Enemy : MonoBehaviour
     public GameObject bullet;
     public GameObject enemyExplosion;
     public GameObject enemyFlash;
+    public GameObject flashSpawnPoint;
 
     public float fireRateTime;
     public float fireRate;
@@ -30,12 +31,15 @@ public class Common_Enemy : MonoBehaviour
     public float medium_distance_from_player;
 
     private Enemy_Spawn en_spawn;
+    private Drop_Items drop_item;
+
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         en_spawn = GameObject.Find("Main Camera").GetComponent<Enemy_Spawn>();
+        drop_item = GameObject.Find("Item_Spawn").GetComponent<Drop_Items>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         x_scale = transform.localScale.x;
         fireRateTime = 0;
@@ -58,8 +62,8 @@ public class Common_Enemy : MonoBehaviour
             fireRateTime += Time.deltaTime * 100;
             if (fireRateTime > fireRate)
             {
-                Instantiate(bullet, new Vector2(transform.position.x, transform.position.y + firePoint_y_offset), Quaternion.identity);
-                Instantiate(enemyFlash, new Vector2(transform.position.x, transform.position.y + firePoint_y_offset), Quaternion.identity);
+                Instantiate(bullet, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation);
+                Instantiate(enemyFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation);
                 fireRateTime = 0;
             }
         }
@@ -98,8 +102,14 @@ public class Common_Enemy : MonoBehaviour
         {
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
+            drop_item.will_drop = true;
             Destroy(gameObject);
         }
+        if (drop_item.will_drop)
+        {
+            drop_item.spawn_point.position = transform.position;
+        }
+
         Vector3 desiredPosition = player.transform.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, y_speed * Time.deltaTime);
         transform.position = new Vector2(transform.position.x,smoothedPosition.y);

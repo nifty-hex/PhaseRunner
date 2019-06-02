@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class Player_shoot : MonoBehaviour
 {
-
     //public GameObject player;
     public GameObject bulletPrefab;
     public GameObject player;
-    public GameObject playerFlash;
     public GameObject flashSpawnPoint;
-    public float flashOffset = 0.1f;
+    public GameObject playerFlash;
+    public Sprite gun0;
+    public Sprite gun1;
+    public Sprite gun2;
+    private Sprite curGun;
     public float fireRate = 0.5f;
-    public int gunType = 0;
-    public int ammoCount; //-1 = infinite bullets
+    public int gunType;
+    private int ammoCount; //-1 = infinite bullets
     private float nextFire;
     private int totalBulletTypes = 3; //assume at least 2
     public int[] ammo;
@@ -25,9 +27,13 @@ public class Player_shoot : MonoBehaviour
         //transform.position += new Vector3(1f, 0, 0);
         nextFire = fireRate;
         ammo = new int[totalBulletTypes];
-        for (int i = 1; i < totalBulletTypes; i++)
-            ammo[i] = ammoCount;
         ammo[0] = -1;
+        ammo[1] = 120; //machine gun
+        ammo[2] = 30; //shotgun
+        //ammo[3] = 10; //railgun
+        gunType = 0;
+        curGun = gun0;
+        this.GetComponent<SpriteRenderer>().sprite = curGun;
     }
 
     // Update is called once per frame
@@ -58,7 +64,6 @@ public class Player_shoot : MonoBehaviour
         //    mousePos.y - transform.position.y); // Get the relative position from player to this object
 
         //transform.right = relPos; // Change the direction of right to be the relative position's x and y coordinates
-
     }
     void shootGun()
     {
@@ -91,26 +96,51 @@ public class Player_shoot : MonoBehaviour
                 break;
         }
         if (ammo[gunType] == 0)
+        {
+            curGun = gun0;
             gunType = 0;
+        }
     }
     void changeGun()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
             gunType = 0;
+            curGun = gun0;
+/*            Color tmp = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+            tmp.a = 0f;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().color = tmp;
+
+            tmp = transform.GetChild(1).GetComponent<SpriteRenderer>().color;
+            tmp.a = 0f;
+            transform.GetChild(1).GetComponent<SpriteRenderer>().color = tmp;
+
+            tmp = transform.GetChild(2).GetComponent<SpriteRenderer>().color;
+            tmp.a = 0f;
+            transform.GetChild(2).GetComponent<SpriteRenderer>().color = tmp;*/
+        }
         //if (Input.GetKeyDown(KeyCode.Alpha4) && ammo[3] != 0)
         //  gunType = 3;
         if (Input.GetKeyDown(KeyCode.Alpha3) && ammo[2] != 0)
+        {
             gunType = 2;
+            curGun = gun2;
+        }
         if (Input.GetKeyDown(KeyCode.Alpha2) && ammo[1] != 0)
+        {
             gunType = 1;
+            curGun = gun1;
+        }
         //Debug.Log("Changing type");
+        this.GetComponent<SpriteRenderer>().sprite = curGun;
     }
     void regularGun()
     {
         if (Input.GetMouseButton(0) && nextFire >= fireRate)
         {
-            Instantiate(playerFlash, new Vector3(flashSpawnPoint.transform.position.x + flashOffset, flashSpawnPoint.transform.position.y, flashSpawnPoint.transform.position.z), flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            flashSpawnPoint.transform.localPosition = new Vector3(0.53f, 0.02f, 0f);
+            Instantiate(playerFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
+            GameObject bullet = Instantiate(bulletPrefab, flashSpawnPoint.transform.position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
             nextFire = 0;
         }
@@ -120,7 +150,9 @@ public class Player_shoot : MonoBehaviour
         float fasterFireRate = fireRate / 2;
         if (Input.GetMouseButton(0) && nextFire >= fasterFireRate && ammo[gunType] != 0)
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+            flashSpawnPoint.transform.localPosition = new Vector3(0.82f, 0.06f, 0f);
+            Instantiate(playerFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
+            GameObject bullet = Instantiate(bulletPrefab, flashSpawnPoint.transform.position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
             nextFire = 0;
             if (ammo[gunType] != -1)
@@ -135,13 +167,12 @@ public class Player_shoot : MonoBehaviour
         {
             //Debug.Log("Shotgun");
 
-            int b = bulletCount;
-            if (b > ammo[gunType] && ammo[gunType] != -1)
-                b = ammo[gunType];
-            for (int a = 0; a < b; a++)
+            flashSpawnPoint.transform.localPosition = new Vector3(0.95f, 0.05f, 0f);
+            Instantiate(playerFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
+            for (int a = 0; a < bulletCount; a++)
             {
                 //Quaternion x = transform.rotation;
-                if (b != 1)
+                if (bulletCount != 1)
                 {
                     //Debug.Log("rotation value: " + (-shootAngle / 2 + shootAngle * a / (b - 1)));
                     //x = new Quaternion(0, 0, (-shootAngle / 2 + shootAngle * a / (b - 1)), 0 );
@@ -149,14 +180,14 @@ public class Player_shoot : MonoBehaviour
                     /*x = Quaternion.Euler(/*-shootAngle / 2 + shootAngle * a / (b - 1) + transform.rotation.x
                         , transform.rotation.y, transform.rotation.z);*/
                 }
-                GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+                GameObject bullet = Instantiate(bulletPrefab, flashSpawnPoint.transform.position, transform.rotation);
                 bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
-                bullet.transform.Rotate(0, 0, -shootAngle / 2 + shootAngle * a / (b - 1));
+                bullet.transform.Rotate(0, 0, -shootAngle / 2 + shootAngle * a / (bulletCount - 1));
                 //Debug.Log(bullet.GetComponent<Rigidbody2D>().rotation);
             }
             nextFire = 0;
             if (ammo[gunType] != -1)
-                ammo[gunType] -= b;
+                ammo[gunType] -= 1;
         }
     }
     void homingGun()
@@ -172,4 +203,5 @@ public class Player_shoot : MonoBehaviour
                 ammo[gunType]--;
         }
     }
+
 }

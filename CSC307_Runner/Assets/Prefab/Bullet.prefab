@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1685572702309686303}
   - component: {fileID: 1685572702309686302}
   - component: {fileID: 1685572702309686301}
+  - component: {fileID: 39269137000665796}
   m_Layer: 12
   m_Name: Bullet
   m_TagString: Player_Bullet
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1685572702309686300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.52, y: 7.46, z: 0}
-  m_LocalScale: {x: 4.2140408, y: 4.2140417, z: 4.2140417}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 71e1d1ce47227c64887e7a8ca00d8ad4, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 8a024c1285239234b96cc20344783e79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,9 +96,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.48, y: 0}
   serializedVersion: 2
-  m_Radius: 0.04299777
+  m_Radius: 0.09
 --- !u!114 &1685572702309686302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +136,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &39269137000665796
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685572702309686300}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e5075de23526d441982ea2603801b37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

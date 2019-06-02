@@ -29,6 +29,7 @@ public class Player_Health : MonoBehaviour {
     void Update () {
 		if (health <= 0)
         {
+            bg.GetComponent<SpriteRenderer>().sortingOrder = 10;
             if (Time.timeScale > time_slowness)
             {
                 Time.timeScale -= (Time.deltaTime * time_fix_mul);

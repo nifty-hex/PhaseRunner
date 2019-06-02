@@ -26,12 +26,13 @@ public class Player_Move : MonoBehaviour
     float normal_hit_recover_time;
 
     public Animator animator;
-    
+    public GameObject enemyExplosion;
+
 
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Version 0.0.141");
+        Debug.Log("Version 0.0.153");
         rigidBody = GetComponent<Rigidbody2D>();
         standard_gravity = rigidBody.gravityScale;
         normal_speed_limit = speed_limit;
@@ -133,6 +134,10 @@ public class Player_Move : MonoBehaviour
         }
         if (collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Enemy_Bullet")
         {
+            if (collision.gameObject.name == "Meteor")
+            {
+                Instantiate(enemyExplosion, transform.position, transform.rotation);
+            }
             is_hit = true;
             Destroy(collision.gameObject);
         }

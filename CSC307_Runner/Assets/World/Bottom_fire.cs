@@ -26,7 +26,8 @@ public class Bottom_fire : MonoBehaviour {
         {
             hp.health = 0;
         }
-        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Obstacles")
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Obstacles" ||
+            collision.gameObject.tag == "Item_Pickup")
         {
             if (collision.gameObject.tag == "Enemy")
                 en_spawn.number_of_enemies--;

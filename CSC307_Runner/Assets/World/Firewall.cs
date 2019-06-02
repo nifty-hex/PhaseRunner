@@ -61,7 +61,9 @@ public class Firewall : MonoBehaviour {
         }
         if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Obstacles" ||
             collision.gameObject.tag == "Banners" || collision.gameObject.tag == "Enemy_Bullet" ||
-             collision.gameObject.tag == "Charger_Jump_Point" || collision.gameObject.tag == "Player_Bullet")
+            collision.gameObject.tag == "Charger_Jump_Point" || collision.gameObject.tag == "Player_Bullet" ||
+            collision.gameObject.tag == "Item_Pickup")
+
         {
             if (collision.gameObject.tag == "Enemy")
                 en_spawn.number_of_enemies--;

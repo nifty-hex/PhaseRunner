@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2207668454967568763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2968262046479420591}
+  m_Layer: 0
+  m_Name: FlashSpawnPoint_Enemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2968262046479420591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2207668454967568763}
+  m_LocalRotation: {x: -0, y: -0.121166795, z: 0, w: 0.99263215}
+  m_LocalPosition: {x: -0.054, y: -0.229, z: -0.013}
+  m_LocalScale: {x: 0.25864094, y: 0.258641, z: 0.25864097}
+  m_Children: []
+  m_Father: {fileID: 6641001137968860965}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6641001137968860964
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +60,8 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.121166795, z: -0, w: 0.99263215}
   m_LocalPosition: {x: -16.43, y: 42.61, z: 5.13}
   m_LocalScale: {x: 3.8663633, y: 3.866363, z: 3.866363}
-  m_Children: []
+  m_Children:
+  - {fileID: 2968262046479420591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,10 +130,11 @@ MonoBehaviour:
   x_speed_limit: 8
   y_speed: 0.5
   bullet: {fileID: 996843609656873469, guid: 853b96d87c6ca1b42b070486b1aaaeff, type: 3}
-  enemyExplosion: {fileID: 7320960408847068331, guid: 5a09e0fb520af5546ae6a7cb99c5e169,
+  enemyExplosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
     type: 3}
-  enemyFlash: {fileID: 6682331549572628247, guid: 7f66d210a105e004b8dda91217c7d11f,
+  enemyFlash: {fileID: 1529778645200042479, guid: 7f66d210a105e004b8dda91217c7d11f,
     type: 3}
+  flashSpawnPoint: {fileID: 2207668454967568763}
   fireRateTime: 0
   fireRate: 225
   firePoint_y_offset: -1
