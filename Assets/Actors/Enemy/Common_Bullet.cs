@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Common_Bullet : MonoBehaviour
-{ 
-    //private GameObject player;
+{
+    public GameObject bulletExplosion;
     private GameObject player_offset;
     public float speed;
     public float life_time;
     public float x_velocity_limit;
     float temp_life;
-    //private Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +39,8 @@ public class Common_Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        GameObject currentExplosion = Instantiate(bulletExplosion, transform.position, transform.rotation);
+        currentExplosion.transform.localScale = new Vector3(2f, 2f, 2f);
     }
 
     void OnBecameInvisible()
