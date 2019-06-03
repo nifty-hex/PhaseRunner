@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996843609656873469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.37, y: 45.36, z: 6.03}
+  m_LocalPosition: {x: -20.467, y: 45.17, z: 6.03}
   m_LocalScale: {x: -0.8, y: 0.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcc15c8422636949a49e13c5082abbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletExplosion: {fileID: 7320960408847068331, guid: 5a09e0fb520af5546ae6a7cb99c5e169,
+    type: 3}
   speed: 7
   life_time: 1500
   x_velocity_limit: 0
