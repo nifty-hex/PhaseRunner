@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿//Owner: Toan Pham
+//This script handles the behavior of the explosion sprite object
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ExplosionAnimationDestroy_Toan : MonoBehaviour
 {
     public Animator animator;
-    // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length + 0.07f);
+        //destroy the explosion after specific amount of time
+        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length + 0.06f);
     }
 }
