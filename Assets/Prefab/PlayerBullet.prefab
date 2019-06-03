@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1685572702309686301}
   - component: {fileID: 39269137000665796}
   m_Layer: 12
-  m_Name: Bullet
+  m_Name: PlayerBullet
   m_TagString: Player_Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +115,8 @@ MonoBehaviour:
   life_time: 2
   rotateSpeed: 400
   bulletType: 0
+  bulletExplode: {fileID: 7320960408847068331, guid: 5a09e0fb520af5546ae6a7cb99c5e169,
+    type: 3}
 --- !u!50 &1685572702309686301
 Rigidbody2D:
   serializedVersion: 4

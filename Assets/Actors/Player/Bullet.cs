@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb2d;
     public float rotateSpeed = 400f;
     public int bulletType = 0; //1 home, 2 explode (explode is dangerous)
+    public GameObject bulletExplode;
 
     // Use this for initialization
     void Start()
@@ -56,6 +57,8 @@ public class Bullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        GameObject currentExplosion = Instantiate(bulletExplode, transform.position, transform.rotation);
+        currentExplosion.transform.localScale = new Vector3(2f, 2f, 2f);
         Destroy(gameObject);
 
         /*if (bulletType == 2)
