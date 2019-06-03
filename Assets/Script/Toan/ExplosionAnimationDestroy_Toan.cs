@@ -11,6 +11,6 @@ public class ExplosionAnimationDestroy_Toan : MonoBehaviour
     void Start()
     {
         //destroy the explosion after specific amount of time
-        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length + 0.06f);
+        Destroy(gameObject, animator.GetCurrentAnimatorStateInfo(0).length + 0.05f);
     }
 }
