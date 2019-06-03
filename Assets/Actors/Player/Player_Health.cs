@@ -20,12 +20,6 @@ public class Player_Health : MonoBehaviour {
 
     public float time_till_scene_change = 3f;
 
-    // Use this for initialization
-    void Start () {
-
-    }
-
-    // Update is called once per frame
     void Update () {
 		if (health <= 0)
         {
@@ -58,7 +52,7 @@ public class Player_Health : MonoBehaviour {
                 }
                 else
                 {
-                    SceneManager.LoadScene(2);
+                    SceneManager.LoadScene("GameOver");
                 }
             }
         }
