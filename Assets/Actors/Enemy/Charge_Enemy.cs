@@ -26,24 +26,20 @@ public class Charge_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.name == "Charger(Clone)")
+        if (rigidBody.velocity.x > speed_limit)
         {
-            if (rigidBody.velocity.x > speed_limit)
-            {
-                rigidBody.AddForce(new Vector2(-speed, 0), ForceMode2D.Impulse);
-            }
-            if (rigidBody.velocity.x == 0)
-            {
-                print("Charger Dead by Stop");
-                en_spawn.number_of_enemies--;
-                Destroy(gameObject);
-            }
+            rigidBody.AddForce(new Vector2(-speed, 0), ForceMode2D.Impulse);
+        }
+        if (rigidBody.velocity.x == 0)
+        {
+            en_spawn.number_of_enemies--;
+            Destroy(gameObject);
         }
     }
 
     void FixedUpdate()
     {
-        if (hp <= 0 && gameObject.name == "Charger(Clone)")
+        if (hp <= 0)
         {
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
