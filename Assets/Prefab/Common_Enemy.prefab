@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6641001137968860970}
   - component: {fileID: 6641001137968860968}
   - component: {fileID: 6641001137968860971}
+  - component: {fileID: 830915503038646295}
   m_Layer: 11
   m_Name: Common_Enemy
   m_TagString: Enemy
@@ -102,7 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b0d6da5f50ef0ed41ba9b05b5b902479, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e65672f3867e607449d334e9aec6a433, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -135,6 +136,7 @@ MonoBehaviour:
   enemyFlash: {fileID: 1529778645200042479, guid: 7f66d210a105e004b8dda91217c7d11f,
     type: 3}
   flashSpawnPoint: {fileID: 2207668454967568763}
+  animator: {fileID: 830915503038646295}
   fireRateTime: 0
   fireRate: 225
   firePoint_y_offset: -1
@@ -181,3 +183,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &830915503038646295
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641001137968860964}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49281f09cb69ffc4cbf913a4d81630f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -13,12 +13,12 @@ public class GameOverMenu : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void RetryGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Project");
     }
 
     public void QuitGame()

@@ -3,48 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Common_Bullet : MonoBehaviour
-{ 
-    //private GameObject player;
+{
+    public GameObject bulletExplosion;
     private GameObject player_offset;
-    float speed;
-    public float clone_speed;
+    public float speed;
     public float life_time;
     public float x_velocity_limit;
     float temp_life;
-    //private Rigidbody2D rigidBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        //player = GameObject.Find("Player");
         player_offset = GameObject.Find("Aim_At");
         transform.LookAt(player_offset.transform);
+        transform.Rotate(0, 90, 0);
         temp_life = life_time;
-        //rigidBody = GetComponent<Rigidbody2D>();
-        if (gameObject.name == "Common_Bullet(Clone)")
-        {
-            speed = clone_speed;
-        }
     }
 
-    void LateUpdate()
-    {
-        if (gameObject.name == "Common_Bullet(Clone)")
-        {
-            //transform.LookAt(player.transform);
-        }
-    }
-
-    // Update is called once pesr frame
+    // Update is called once per frame
     void Update()
     {
         life_time -= Time.deltaTime * 100;
         if (life_time <= 0)
         {
-            Destroy(GameObject.Find("Common_Bullet(Clone)"));
+            Destroy(gameObject);
             life_time = temp_life;
         }
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(new Vector3(-1, 0 ,0) * speed * Time.deltaTime);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -52,14 +37,15 @@ public class Common_Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Wall" || 
             collision.gameObject.tag == "Player_Bullet")
         {
-            Destroy(GameObject.Find("Common_Bullet(Clone)"));
+            Destroy(gameObject);
         }
+        GameObject currentExplosion = Instantiate(bulletExplosion, transform.position, transform.rotation);
+        currentExplosion.transform.localScale = new Vector3(2f, 2f, 2f);
     }
 
     void OnBecameInvisible()
     {
-        if (gameObject.name == "Common_Bullet(Clone)")
-            Destroy(gameObject);
+        Destroy(gameObject);
     }
 }
 

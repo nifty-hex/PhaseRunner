@@ -26,8 +26,6 @@ public class Player_Move : MonoBehaviour
     float normal_hit_recover_time;
 
     public Animator animator;
-    public GameObject enemyExplosion;
-
 
     // Use this for initialization
     void Start()
@@ -136,10 +134,6 @@ public class Player_Move : MonoBehaviour
         }
         if (collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Enemy_Bullet")
         {
-            if (collision.gameObject.name == "Meteor")
-            {
-                Instantiate(enemyExplosion, transform.position, transform.rotation);
-            }
             is_hit = true;
             Destroy(collision.gameObject);
         }

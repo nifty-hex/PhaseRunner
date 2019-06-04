@@ -34,21 +34,16 @@ public class Boomer_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.name == "Boomer")
+
+        if (rigidBody.velocity.x < x_speed_limit)
         {
-            //transform.position = new Vector2(player.transform.position.x + 100, player.transform.position.y);
+            rigidBody.AddForce(new Vector2(x_speed, 0), ForceMode2D.Impulse);
         }
-        if (gameObject.name == "Boomer(Clone)")
-        {
-            if (rigidBody.velocity.x < x_speed_limit)
-            {
-                rigidBody.AddForce(new Vector2(x_speed, 0), ForceMode2D.Impulse);
-            }
-            Vector3 desiredPosition = player.transform.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, y_speed * Time.deltaTime);
-            transform.position = new Vector2(transform.position.x, smoothedPosition.y);
-        }
-        if (hp <= 0 && (gameObject.name == "Boomer(Clone)"))
+        Vector3 desiredPosition = player.transform.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, y_speed * Time.deltaTime);
+        transform.position = new Vector2(transform.position.x, smoothedPosition.y);
+
+        if (hp <= 0)
         {
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);

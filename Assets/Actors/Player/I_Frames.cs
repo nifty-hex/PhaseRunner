@@ -9,13 +9,13 @@ public class I_Frames : MonoBehaviour
     public bool invin;
     Color tmp;
     public float i_frame_anim;
-    float temp_i_frame_anim;
+    //float temp_i_frame_anim; //unused variables
 
     // Start is called before the first frame update
     void Start()
     {
         temp_i_frame_time = i_frame_time;
-        temp_i_frame_anim = i_frame_anim;
+        //temp_i_frame_anim = i_frame_anim;
         invin = false;
     }
 
