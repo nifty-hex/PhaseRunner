@@ -7,7 +7,7 @@ public class SoundManagerScript : MonoBehaviour
     public static AudioClip playerHitSound, playerDieSound, playerJumpSound,
                             pistolSound, shotgunSound, railgunSound, machinegunSound,
                             enemyDestroySound, enemyShootSound, boomerShootSound,
-                            heartPickupSound, alarmSound, glassBreakSound;
+                            heartPickupSound, reloadSound, alarmSound, glassBreakSound;
     static AudioSource audioSrc;
 
     // Start is called before the first frame update
@@ -21,6 +21,7 @@ public class SoundManagerScript : MonoBehaviour
         railgunSound = Resources.Load<AudioClip>("rail gun");
         machinegunSound = Resources.Load<AudioClip>("machine gun");
         heartPickupSound = Resources.Load<AudioClip>("heart pickup");
+        reloadSound = Resources.Load<AudioClip>("reload");
 
         enemyDestroySound = Resources.Load<AudioClip>("Explosion");
         enemyShootSound = Resources.Load<AudioClip>("super pew");
@@ -43,6 +44,9 @@ public class SoundManagerScript : MonoBehaviour
         {
             case "hurt sound":
                 audioSrc.PlayOneShot(playerHitSound);
+                break;
+            case "reload":
+                audioSrc.PlayOneShot(reloadSound);
                 break;
             case "jump":
                 audioSrc.PlayOneShot(playerJumpSound);
