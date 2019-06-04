@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MusicManagerScript : MonoBehaviour
 {
-    public static AudioClip menuMusic;
+    public static AudioClip menuMusic, easyMusic;
     static AudioSource audioSrc;
     string currentScene;
+    public float pitch = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         menuMusic = Resources.Load<AudioClip>("menu music");
+        easyMusic = Resources.Load<AudioClip>("easy music");
         audioSrc = GetComponent<AudioSource>();
         currentScene = "warning";
+        pitch = 0.5f;
+        audioSrc.pitch = pitch;
     }
 
     // Update is called once per frame
@@ -30,6 +34,9 @@ public class MusicManagerScript : MonoBehaviour
                 case "MainMenu":
                     PlayMusic("menu music");
                     break;
+                case "Project":
+                    PlayMusic("easy music");
+                    break;
             }
         }
     }
@@ -39,9 +46,16 @@ public class MusicManagerScript : MonoBehaviour
         switch(song)
         {
             case "menu music":
-                Debug.Log("ee");
                 audioSrc.PlayOneShot(menuMusic);
                 break;
+            case "easy music":
+                audioSrc.PlayOneShot(easyMusic);
+                break;
         }
+    }
+
+    public static void DynamicMusic()
+    {
+
     }
 }
