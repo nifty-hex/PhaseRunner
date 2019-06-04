@@ -13,6 +13,8 @@ public class Slow_Time : MonoBehaviour {
     public float normal_time_slow_limit;
     public bool over_limit;
     public bool is_time_slow;
+    public bool slow_sound_played = false;
+    public bool speed_sound_played = false;
 
     public float current_alpha = 0;
     public float bw_alpha = 0.5f;
@@ -64,6 +66,12 @@ public class Slow_Time : MonoBehaviour {
 
         if (is_time_slow)
         {
+            if (slow_sound_played == false)
+            {
+                SoundManagerScript.PlaySound("slow down");
+                slow_sound_played = true;
+            }
+        
             tmp = bg.GetComponent<SpriteRenderer>().color;
             if (tmp.a < bw_alpha)
             {
@@ -74,7 +82,11 @@ public class Slow_Time : MonoBehaviour {
         else
         {
             tmp = bg.GetComponent<SpriteRenderer>().color;
-
+            if(slow_sound_played)
+            {
+                SoundManagerScript.PlaySound("speed up");
+                slow_sound_played = false;
+            }
             if (tmp.a > standard_alpha)
             {
                 tmp.a -= change_speed;

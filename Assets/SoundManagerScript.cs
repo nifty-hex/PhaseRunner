@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManagerScript : MonoBehaviour
 {
-    public static AudioClip playerHitSound, playerDieSound, playerJumpSound,
+    public static AudioClip playerHitSound, playerDieSound, playerJumpSound, slowDownSound, speedUpSound,
                             pistolSound, shotgunSound, railgunSound, machinegunSound,
                             enemyDestroySound, enemyShootSound, boomerShootSound,
                             heartPickupSound, reloadSound, alarmSound, glassBreakSound;
@@ -15,6 +15,8 @@ public class SoundManagerScript : MonoBehaviour
     {
         playerHitSound = Resources.Load<AudioClip>("hurt sound");
         playerDieSound = Resources.Load<AudioClip>("player die");
+        speedUpSound = Resources.Load<AudioClip>("slow down");
+        slowDownSound = Resources.Load<AudioClip>("speed up");
         playerJumpSound = Resources.Load<AudioClip>("jump");
         pistolSound = Resources.Load<AudioClip>("pistol");
         shotgunSound = Resources.Load<AudioClip>("shot gun");
@@ -44,6 +46,12 @@ public class SoundManagerScript : MonoBehaviour
         {
             case "hurt sound":
                 audioSrc.PlayOneShot(playerHitSound);
+                break;
+            case "speed up":
+                audioSrc.PlayOneShot(speedUpSound);
+                break;
+            case "slow down":
+                audioSrc.PlayOneShot(slowDownSound);
                 break;
             case "reload":
                 audioSrc.PlayOneShot(reloadSound);

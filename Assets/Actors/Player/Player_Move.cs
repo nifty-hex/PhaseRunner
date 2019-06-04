@@ -89,6 +89,7 @@ public class Player_Move : MonoBehaviour
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
                 rigidBody.AddForce(new Vector2(0, jump_force), ForceMode2D.Impulse);
                 can_jump = false;
+                SoundManagerScript.PlaySound("jump");
                 animator.SetBool("jump", true);
             }
             else if (Input.GetKeyDown(KeyCode.Space) && can_jump == false && can_double_jump)
@@ -96,6 +97,7 @@ public class Player_Move : MonoBehaviour
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
                 rigidBody.AddForce(new Vector2(0, double_jump_force), ForceMode2D.Impulse);
                 can_double_jump = false;
+                SoundManagerScript.PlaySound("jump");
                 animator.SetBool("doublejump", true);
 
             }
