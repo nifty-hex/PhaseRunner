@@ -48,6 +48,7 @@ public class Common_Enemy : MonoBehaviour
         {
             Instantiate(bullet, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation);
             Instantiate(enemyFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation);
+            SoundManagerScript.PlaySound("super pew");
             fireRateTime = 0;
         }
     }
@@ -76,6 +77,7 @@ public class Common_Enemy : MonoBehaviour
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
             drop_item.will_drop = true;
+            SoundManagerScript.PlaySound("Explosion");
             Destroy(gameObject);
         }
         if (drop_item.will_drop)
