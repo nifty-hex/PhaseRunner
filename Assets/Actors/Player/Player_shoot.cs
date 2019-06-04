@@ -142,6 +142,7 @@ public class Player_shoot : MonoBehaviour
             Instantiate(playerFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
             GameObject bullet = Instantiate(bulletPrefab, flashSpawnPoint.transform.position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
+            SoundManagerScript.PlaySound("pistol");
             nextFire = 0;
         }
     }
@@ -155,6 +156,7 @@ public class Player_shoot : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, flashSpawnPoint.transform.position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);
             nextFire = 0;
+            SoundManagerScript.PlaySound("machine gun");
             if (ammo[gunType] != -1)
                 ammo[gunType]--;
         }
@@ -186,6 +188,7 @@ public class Player_shoot : MonoBehaviour
                 //Debug.Log(bullet.GetComponent<Rigidbody2D>().rotation);
             }
             nextFire = 0;
+            SoundManagerScript.PlaySound("shot gun");
             if (ammo[gunType] != -1)
                 ammo[gunType] -= 1;
         }
