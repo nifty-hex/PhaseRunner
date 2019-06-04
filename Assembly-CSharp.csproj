@@ -74,8 +74,10 @@
     <Compile Include="Assets\Actors\Player\Player_Move.cs" />
     <Compile Include="Assets\Actors\Player\Player_shoot.cs" />
     <Compile Include="Assets\Actors\Player\Slow_Time.cs" />
+    <Compile Include="Assets\DontDestroy.cs" />
     <Compile Include="Assets\Menu\GameOver\GameOverMenu.cs" />
     <Compile Include="Assets\Menu\Main\MainMenu.cs" />
+    <Compile Include="Assets\MusicManagerScript.cs" />
     <Compile Include="Assets\Script\Toan\BottomFileFill_Toan.cs" />
     <Compile Include="Assets\Script\Toan\BottomFire_Toan.cs" />
     <Compile Include="Assets\Script\Toan\DummyTutorial.cs" />
