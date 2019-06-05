@@ -9,6 +9,7 @@ public class SoundManagerScript : MonoBehaviour
                             enemyDestroySound, enemyShootSound, boomerShootSound,
                             heartPickupSound, reloadSound, alarmSound, glassBreakSound;
     static AudioSource audioSrc;
+    public float pitch = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class SoundManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        audioSrc.pitch = pitch;
     }
 
     public static void PlaySound(string clip)
