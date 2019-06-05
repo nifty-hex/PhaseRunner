@@ -39,12 +39,13 @@ public class TutorialSceneController : MonoBehaviour
         triggerLocation[2] = 20.7f;
         triggerLocation[3] = 36f;
         triggerLocation[4] = 67f;
+        triggerLocation[5] = 88.5f;
         tutorial[0] = " Hello there, you are in a\n simulated training room.\n We will start preparing\n you for your run.";
         tutorial[1] = "     CONTROL\n\n     Aim:\n\n     Shoot:\n\n     Jump:";
         tutorial[2] = "     CONTROL\n\n     Speed up:\n\n     Slow down:\n\n     Slow time:";
         tutorial[3] = "     GUNS\n\n     Pistol:\n\n     Machine gun:\n\n     Shotgun:\n\n     Railgun:";
         tutorial[4] = " Now shoot the drone in \nfront of you ane we can\n proceed to the run.";
-
+        tutorial[5] = " Oops! You missed your chance to shoot the drone. Restarting training ground shortly.";
         trigger.transform.position = new Vector3(triggerLocation[currentLocationIndex], -1.08f, 0);
     }
 
@@ -137,6 +138,10 @@ public class TutorialSceneController : MonoBehaviour
             button_3.SetActive(false);
             button_4.SetActive(false);
         }
+        else if (currentLocationIndex == 6)
+        {
+            StartCoroutine(restartScene());
+        }
         image.SetActive(false);
         trigger.transform.position = new Vector3(triggerLocation[currentLocationIndex], -1.08f, 0);
     }
@@ -145,6 +150,12 @@ public class TutorialSceneController : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene("Project");
+    }
+
+    IEnumerator restartScene()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
 
