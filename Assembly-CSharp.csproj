@@ -70,6 +70,7 @@
      <Compile Include="Assets\Menu\GameOver\GameOverMenu.cs" />
      <Compile Include="Assets\Menu\Main\MainMenu.cs" />
      <Compile Include="Assets\MusicManagerScript.cs" />
+     <Compile Include="Assets\Resources\Prefab\Meteor_Prefab.cs" />
      <Compile Include="Assets\Script\Toan\BottomFileFill_Toan.cs" />
      <Compile Include="Assets\Script\Toan\BottomFire_Toan.cs" />
      <Compile Include="Assets\Script\Toan\DummyTutorial.cs" />
