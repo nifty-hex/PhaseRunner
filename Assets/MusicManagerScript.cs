@@ -17,13 +17,13 @@ public class MusicManagerScript : MonoBehaviour
         easyMusic = Resources.Load<AudioClip>("easy music");
         audioSrc = GetComponent<AudioSource>();
         currentScene = "warning";
-        pitch = 0.5f;
-        audioSrc.pitch = pitch;
     }
 
     // Update is called once per frame
     void Update()
     {
+        audioSrc.pitch = pitch;
+        Debug.Log(pitch);
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name != currentScene || !audioSrc.isPlaying) // play music if it stops or scene changes
         {

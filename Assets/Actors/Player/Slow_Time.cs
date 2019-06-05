@@ -70,6 +70,8 @@ public class Slow_Time : MonoBehaviour {
             {
                 SoundManagerScript.PlaySound("slow down");
                 slow_sound_played = true;
+                GameObject.Find("MusicManager").GetComponent<MusicManagerScript>().pitch = 0.5f;
+                GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().pitch = 0.5f;
             }
         
             tmp = bg.GetComponent<SpriteRenderer>().color;
@@ -86,6 +88,8 @@ public class Slow_Time : MonoBehaviour {
             {
                 SoundManagerScript.PlaySound("speed up");
                 slow_sound_played = false;
+                GameObject.Find("MusicManager").GetComponent<MusicManagerScript>().pitch = 1.0f;
+                GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().pitch = 1.0f;
             }
             if (tmp.a > standard_alpha)
             {
