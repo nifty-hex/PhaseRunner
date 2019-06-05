@@ -244,7 +244,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968299880967968969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d21a53ff438cb55408fd65883716c508, type: 3}
   m_Name: 
@@ -258,6 +258,8 @@ MonoBehaviour:
   normal_time_slow_limit: 0
   over_limit: 0
   is_time_slow: 0
+  slow_sound_played: 0
+  speed_sound_played: 0
   current_alpha: 0
   bw_alpha: 0.25
   standard_alpha: 0
@@ -271,7 +273,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 968299880967968969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff6bc682bd7bb1e48aa5f1799bac6ad8, type: 3}
   m_Name: 
