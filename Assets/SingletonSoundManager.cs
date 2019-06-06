@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SingletonSoundManager : MonoBehaviour
 {
-    public static SingletonSoundManager i;
+    /*public static SingletonSoundManager i;
 
     void Awake()
     {
         if (i == null)
         {
             i = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(i);
         }
         else Destroy(this); // or gameObject
-    }
+    }*/
 }
