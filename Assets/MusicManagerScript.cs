@@ -7,8 +7,9 @@ public class MusicManagerScript : MonoBehaviour
 {
     public static AudioClip menuMusic, easyMusic;
     static AudioSource audioSrc;
-    string currentScene;
+    public static string currentScene;
     public float pitch = 1.0f;
+    private GameObject[] getCount;
 
     private void Awake()
     {
@@ -28,30 +29,41 @@ public class MusicManagerScript : MonoBehaviour
     void Update()
     {
         audioSrc.pitch = pitch;
-        Debug.Log(pitch);
+        CheckScene();
+    }
+
+    public void CheckScene()
+    {
         Scene scene = SceneManager.GetActiveScene();
-        if(scene.name != currentScene || !audioSrc.isPlaying) // play music if it stops or scene changes
+        if (scene.name != currentScene || !audioSrc.isPlaying)
         {
-            currentScene = scene.name;
-            audioSrc.Stop();                // stop previous music
-            switch (scene.name)
-            {
-                case "MainMenu":
-                    PlayMusic("menu music");
-                    break;
-                case "Project":
-                    PlayMusic("easy music");
-                    break;
-            }
+            SceneChange(scene);
         }
     }
 
-    public static void PlayMusic(string song)
+    public void SceneChange(Scene scene)
+    {
+        currentScene = scene.name;
+        audioSrc.Stop();                // stop previous music
+        switch (scene.name)
+        {
+            case "MainMenu":
+                PlayMusic("menu music");
+                break;
+            case "Project":
+                PlayMusic("easy music");
+                break;
+            case "GameOver":
+                Destroy(gameObject);
+                break;
+        }
+    }
+
+    public void PlayMusic(string song)
     {
         switch(song)
         {
             case "menu music":
-                Debug.Log("ee");
                 audioSrc.PlayOneShot(menuMusic);
                 break;
             case "easy music":

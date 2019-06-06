@@ -70,6 +70,7 @@ public class Slow_Time : MonoBehaviour {
             {
                 SoundManagerScript.PlaySound("slow down");
                 slow_sound_played = true;
+                Debug.Log("eeee");
                 GameObject.Find("MusicManager").GetComponent<MusicManagerScript>().pitch = 0.5f;
                 GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().pitch = 0.5f;
             }
