@@ -13,12 +13,14 @@ public class MeteorScript : MonoBehaviour
     void Start()
     {
         drop_item = GameObject.Find("Item_Spawn").GetComponent<Drop_Items>();
+        SoundManagerScript.PlaySound("meteor drop");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Obstacles")
         {
+            SoundManagerScript.PlaySound("meteor");
             animator.SetBool("Ground", true);
         }
         if (collision.gameObject.tag == "Player")

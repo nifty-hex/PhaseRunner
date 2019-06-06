@@ -7,9 +7,14 @@ public class SoundManagerScript : MonoBehaviour
     public static AudioClip playerHitSound, playerDieSound, playerJumpSound, slowDownSound, speedUpSound,
                             pistolSound, shotgunSound, railgunSound, machinegunSound,
                             enemyDestroySound, enemyShootSound, boomerShootSound,
-                            heartPickupSound, reloadSound, alarmSound, glassBreakSound;
+                            heartPickupSound, reloadSound, alarmSound, glassBreakSound, meteorSound, meteorDropSound;
     static AudioSource audioSrc;
     public float pitch = 1.0f;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +32,12 @@ public class SoundManagerScript : MonoBehaviour
         reloadSound = Resources.Load<AudioClip>("Sound/reload");
 
         enemyDestroySound = Resources.Load<AudioClip>("Sound/Explosion");
+        meteorSound = Resources.Load<AudioClip>("Sound/meteor");
         enemyShootSound = Resources.Load<AudioClip>("Sound/super pew");
         boomerShootSound = Resources.Load<AudioClip>("Sound/super pew 2");
         glassBreakSound = Resources.Load<AudioClip>("Sound/glass break");
         alarmSound = Resources.Load<AudioClip>("Sound/alarm");
+        meteorDropSound = Resources.Load<AudioClip>("Sound/meteor drop");
 
         audioSrc = GetComponent<AudioSource>();
     }
@@ -43,10 +50,19 @@ public class SoundManagerScript : MonoBehaviour
 
     public static void PlaySound(string clip)
     {
+        audioSrc.volume = 1.0f;
         switch (clip)
         {
+            case "meteor drop":
+                audioSrc.volume = 0.3f;
+                audioSrc.PlayOneShot(meteorDropSound);
+                break;
             case "hurt sound":
                 audioSrc.PlayOneShot(playerHitSound);
+                break;
+            case "meteor":
+                audioSrc.volume = 0.3f;
+                audioSrc.PlayOneShot(meteorSound);
                 break;
             case "speed up":
                 audioSrc.PlayOneShot(speedUpSound);
