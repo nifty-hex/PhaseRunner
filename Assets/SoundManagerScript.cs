@@ -11,7 +11,6 @@ public class SoundManagerScript : MonoBehaviour
                             heartPickupSound, reloadSound, alarmSound, glassBreakSound, meteorSound, meteorDropSound;
     static AudioSource audioSrc;
     public float pitch = 1.0f;
-    private GameObject[] getCount;
 
     private void Awake()
     {

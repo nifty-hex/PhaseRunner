@@ -7,7 +7,7 @@ public class Player_Score : MonoBehaviour
 {
     public GameObject player;
     public Player_Health player_hp;
-    public static int player_score;
+    public int player_score;
     public int score2; //non static use
     Text ScoreText;
     float start_x;
