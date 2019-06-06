@@ -6406,6 +6406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4d653f02db2a144b060368eeb216d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pitch: 1
 --- !u!82 &534935440
 AudioSource:
   m_ObjectHideFlags: 0
@@ -47185,6 +47186,11 @@ PrefabInstance:
       propertyPath: bg
       value: 
       objectReference: {fileID: 1951483167}
+    - target: {fileID: 968299880967968962, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 968299880967968961, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
         type: 3}
       propertyPath: Platform_1
@@ -47265,6 +47271,11 @@ PrefabInstance:
       propertyPath: Hotel_Sign
       value: 
       objectReference: {fileID: 1946883173}
+    - target: {fileID: 968299880967968961, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 968299880967968960, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
         type: 3}
       propertyPath: bg
