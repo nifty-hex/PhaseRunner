@@ -1,18 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
+    public static DontDestroy i;
+
     void Awake()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("music");
-
-        if (objs.Length > 1)
+        if (i == null)
         {
-            Destroy(this.gameObject);
+            i = this;
+            DontDestroyOnLoad(gameObject);
         }
-
-        DontDestroyOnLoad(this.gameObject);
+        else Destroy(this); // or gameObject
     }
 }
+

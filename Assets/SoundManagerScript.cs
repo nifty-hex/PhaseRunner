@@ -14,23 +14,23 @@ public class SoundManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerHitSound = Resources.Load<AudioClip>("hurt sound");
-        playerDieSound = Resources.Load<AudioClip>("player die");
-        speedUpSound = Resources.Load<AudioClip>("slow down");
-        slowDownSound = Resources.Load<AudioClip>("speed up");
-        playerJumpSound = Resources.Load<AudioClip>("jump");
-        pistolSound = Resources.Load<AudioClip>("pistol");
-        shotgunSound = Resources.Load<AudioClip>("shot gun");
-        railgunSound = Resources.Load<AudioClip>("rail gun");
-        machinegunSound = Resources.Load<AudioClip>("machine gun");
-        heartPickupSound = Resources.Load<AudioClip>("heart pickup");
-        reloadSound = Resources.Load<AudioClip>("reload");
+        playerHitSound = Resources.Load<AudioClip>("Sound/hurt sound");
+        playerDieSound = Resources.Load<AudioClip>("Sound/player die");
+        speedUpSound = Resources.Load<AudioClip>("Sound/slow down");
+        slowDownSound = Resources.Load<AudioClip>("Sound/speed up");
+        playerJumpSound = Resources.Load<AudioClip>("Sound/jump");
+        pistolSound = Resources.Load<AudioClip>("Sound/pistol");
+        shotgunSound = Resources.Load<AudioClip>("Sound/shot gun");
+        railgunSound = Resources.Load<AudioClip>("Sound/rail gun");
+        machinegunSound = Resources.Load<AudioClip>("Sound/machine gun");
+        heartPickupSound = Resources.Load<AudioClip>("Sound/heart pickup");
+        reloadSound = Resources.Load<AudioClip>("Sound/reload");
 
-        enemyDestroySound = Resources.Load<AudioClip>("Explosion");
-        enemyShootSound = Resources.Load<AudioClip>("super pew");
-        boomerShootSound = Resources.Load<AudioClip>("super pew 2");
-        glassBreakSound = Resources.Load<AudioClip>("glass break");
-        alarmSound = Resources.Load<AudioClip>("alarm");
+        enemyDestroySound = Resources.Load<AudioClip>("Sound/Explosion");
+        enemyShootSound = Resources.Load<AudioClip>("Sound/super pew");
+        boomerShootSound = Resources.Load<AudioClip>("Sound/super pew 2");
+        glassBreakSound = Resources.Load<AudioClip>("Sound/glass break");
+        alarmSound = Resources.Load<AudioClip>("Sound/alarm");
 
         audioSrc = GetComponent<AudioSource>();
     }
