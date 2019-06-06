@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoundManagerScript : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SoundManagerScript : MonoBehaviour
                             heartPickupSound, reloadSound, alarmSound, glassBreakSound, meteorSound, meteorDropSound;
     static AudioSource audioSrc;
     public float pitch = 1.0f;
+    private GameObject[] getCount;
 
     private void Awake()
     {
@@ -46,6 +48,9 @@ public class SoundManagerScript : MonoBehaviour
     void Update()
     {
         audioSrc.pitch = pitch;
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.name == "GameOver")
+            Destroy(gameObject);
     }
 
     public static void PlaySound(string clip)

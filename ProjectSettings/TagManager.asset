@@ -15,6 +15,7 @@ TagManager:
   - Charger_Jump_Point
   - Item_Pickup
   - music
+  - sound
   layers:
   - Default
   - TransparentFX
