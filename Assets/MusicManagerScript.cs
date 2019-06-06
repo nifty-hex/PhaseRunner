@@ -13,8 +13,8 @@ public class MusicManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menuMusic = Resources.Load<AudioClip>("menu music");
-        easyMusic = Resources.Load<AudioClip>("easy music");
+        menuMusic = Resources.Load<AudioClip>("Sound/menu music");
+        easyMusic = Resources.Load<AudioClip>("Sound/easy music");
         audioSrc = GetComponent<AudioSource>();
         currentScene = "warning";
     }
@@ -46,6 +46,7 @@ public class MusicManagerScript : MonoBehaviour
         switch(song)
         {
             case "menu music":
+                Debug.Log("ee");
                 audioSrc.PlayOneShot(menuMusic);
                 break;
             case "easy music":
