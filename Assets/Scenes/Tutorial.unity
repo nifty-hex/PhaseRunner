@@ -8967,10 +8967,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -9712,6 +9712,8 @@ MonoBehaviour:
   normal_time_slow_limit: 0
   over_limit: 0
   is_time_slow: 0
+  slow_sound_played: 0
+  speed_sound_played: 0
   current_alpha: 0
   bw_alpha: 0.25
   standard_alpha: 0
