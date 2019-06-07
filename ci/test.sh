@@ -21,7 +21,7 @@ elif [ $UNITY_EXIT_CODE -eq 2 ]; then
 elif [ $UNITY_EXIT_CODE -eq 3 ]; then
   echo "Run failure (other failure)";
 else
-  echo "Unexpected exit code $UNITY_EXIT_CODE";
+  echo "test.sh: Unexpected exit code $UNITY_EXIT_CODE";
 fi
 
 cat $(pwd)/$TEST_PLATFORM-results.xml | grep test-run | grep Passed
