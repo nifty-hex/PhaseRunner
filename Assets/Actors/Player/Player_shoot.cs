@@ -101,6 +101,7 @@ public class Player_shoot : MonoBehaviour
             gunType = 0;
         }
     }
+    //*input
     void changeGun()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

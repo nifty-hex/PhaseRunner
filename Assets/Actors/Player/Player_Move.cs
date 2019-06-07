@@ -61,7 +61,7 @@ public class Player_Move : MonoBehaviour
         {
             rigidBody.AddForce(new Vector2(speed, 0), ForceMode2D.Impulse);
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (WrapInput.ResetScene())
         {
             SceneManager.LoadScene(1);
         }
@@ -70,11 +70,11 @@ public class Player_Move : MonoBehaviour
             Y_Velocity = rigidBody.velocity.y;
            
             //Standard Movement
-            if (Input.GetKey("d"))
+            if (WrapInput.SpeedUp())
             {
                 speed_limit = high_speed_limit;
             }
-            else if (Input.GetKey("a"))
+            else if (WrapInput.SpeedDown())
             {
                 speed_limit = low_speed_limit;
             }
@@ -84,7 +84,7 @@ public class Player_Move : MonoBehaviour
             }
 
             //Jumping
-            if (Input.GetKeyDown(KeyCode.Space) && can_jump)
+            if (WrapInput.Jump() && can_jump)
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
                 rigidBody.AddForce(new Vector2(0, jump_force), ForceMode2D.Impulse);
@@ -92,7 +92,7 @@ public class Player_Move : MonoBehaviour
                 SoundManagerScript.PlaySound("jump");
                 animator.SetBool("jump", true);
             }
-            else if (Input.GetKeyDown(KeyCode.Space) && can_jump == false && can_double_jump)
+            else if (WrapInput.Jump() && can_jump == false && can_double_jump)
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
                 rigidBody.AddForce(new Vector2(0, double_jump_force), ForceMode2D.Impulse);
@@ -103,7 +103,7 @@ public class Player_Move : MonoBehaviour
             }
 
             //Gliding
-            if (Input.GetKey(KeyCode.Space))
+            if (WrapInput.Glide())
             {
                 if (rigidBody.velocity.y < 0 && can_jump == false)
                 {
