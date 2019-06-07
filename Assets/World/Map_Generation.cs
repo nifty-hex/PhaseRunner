@@ -45,13 +45,19 @@ public class Map_Generation : MonoBehaviour {
     public GameObject obstacle_2;
     public GameObject Enemy_1;
 
+    public GameObject canvas;
+
     public int map_id;
     public float med_scale;
     public float long_scale;
 
     // Use this for initialization
     void Start () {
-
+#if UNITY_STANDALONE || UNITY_WEBPLAYER
+	    canvas=GameObject.Find("CanvasMobile");
+	    if(canvas)	
+	    	canvas.SetActive(false);
+#endif
     }
 
     // Update is called once per frame
