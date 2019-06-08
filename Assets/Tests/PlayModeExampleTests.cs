@@ -9,7 +9,7 @@ public class PlayModeTests : MonoBehaviour
     public Meteor_Prefab meteor_script;
 
     [UnityTest]
-    public IEnumerator PlayerMovement()
+    public IEnumerator testPlayerMovement()
     {
         GameObject player =
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
@@ -20,20 +20,30 @@ public class PlayModeTests : MonoBehaviour
         float distance2 = player.transform.position.x;
         Assert.True(distance2 > distance1);
     }
-
+/*
     [UnityTest]
-    public IEnumerator SpawnPlayerBullet()
+    public IEnumerator PlayerSpeed()
     {
-        GameObject gameGameObject =
+      GameObject player =
+          MonoBehaviour.Instantiate(Resources.Load<GameObject>
+              ("Prefab/Player"));
+
+      Assert.True(player.low_speed_limit <= player.speed <= player.high_speed_limit);
+    }
+*/
+  [UnityTest]
+    public IEnumerator testSpawnPlayerBullet()
+    {
+        GameObject bullet =
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
                 ("Prefab/Bullet"));
 
-        Assert.True(true);
         yield return new WaitForSeconds(0.1f);
+        Assert.IsNotNull(bullet);
     }
 
     [UnityTest]
-    public IEnumerator EnemyBulletAimAtPlayer()
+    public IEnumerator testEnemyBulletAimAtPlayer()
     {
         GameObject player =
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
@@ -52,7 +62,7 @@ public class PlayModeTests : MonoBehaviour
     }
 
     [UnityTest]
-    public IEnumerator BulletHitObstacles()
+    public IEnumerator testBulletHitObstacles()
     {
         GameObject bullet =
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
