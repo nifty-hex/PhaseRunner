@@ -29,15 +29,15 @@ public class Weapon_UI : MonoBehaviour
         {
             if (shoot.gunType == 0) //Pistol
             {
-                GetComponent<SpriteRenderer>().sprite = pistol;
+                GetComponent<Image>().sprite = pistol;
             }
             if (shoot.gunType == 1) //Machine Gun
             {
-                GetComponent<SpriteRenderer>().sprite = machine_gun;
+                GetComponent<Image>().sprite = machine_gun;
             }
             if (shoot.gunType == 2) //Shotgun
             {
-                GetComponent<SpriteRenderer>().sprite = shotgun;
+                GetComponent<Image>().sprite = shotgun;
             }
             if (shoot.gunType == 3) //Railgun
             {
