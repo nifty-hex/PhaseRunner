@@ -16,6 +16,7 @@ TagManager:
   - Item_Pickup
   - music
   - sound
+  - Mobile_Buttons
   layers:
   - Default
   - TransparentFX
@@ -37,7 +38,7 @@ TagManager:
   - Charger_Jump_Lay
   - Charger_Lay
   - Item_Pickup
-  - 
+  - UI2
   - 
   - 
   - 
