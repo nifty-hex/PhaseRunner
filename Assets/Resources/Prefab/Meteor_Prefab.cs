@@ -26,15 +26,10 @@ public class Meteor_Prefab : MonoBehaviour
         {
             Instantiate(explosion, transform.position, transform.rotation);
         }
-        if (collision.gameObject.tag == "Player_Bullet")
+        if (collision.gameObject.tag == "Player_Bullet" || collision.gameObject.tag == "Player")
         {
             got_hit = true;
-            drop_item.will_drop = true;
             Instantiate(explosion, transform.position, transform.rotation);
-        }
-        if (drop_item.will_drop)
-        {
-            drop_item.spawn_point.position = transform.position;
         }
     }
 }

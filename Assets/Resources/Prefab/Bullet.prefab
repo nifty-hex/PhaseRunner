@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1685572702309686297}
   - component: {fileID: 1685572702309686296}
   - component: {fileID: 1685572702309686303}
-  - component: {fileID: 1685572702309686302}
+  - component: {fileID: 5107746192426279655}
   - component: {fileID: 1685572702309686301}
   - component: {fileID: 39269137000665796}
   m_Layer: 12
@@ -99,7 +99,7 @@ CircleCollider2D:
   m_Offset: {x: 0.48, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
---- !u!114 &1685572702309686302
+--- !u!114 &5107746192426279655
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,8 @@ MonoBehaviour:
   life_time: 2
   rotateSpeed: 400
   bulletType: 0
+  bulletExplode: {fileID: 7320960408847068331, guid: be5bbd60e3a34054ab1c14e54e6fd96b,
+    type: 3}
 --- !u!50 &1685572702309686301
 Rigidbody2D:
   serializedVersion: 4

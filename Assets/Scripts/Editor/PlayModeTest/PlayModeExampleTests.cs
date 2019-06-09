@@ -7,10 +7,13 @@ public class PlayModeTests : MonoBehaviour
 {
 
     public Meteor_Prefab meteor_script;
+    public Meteor_Prefab meteor_script2;
     public Jump_Prefab player_jump;
     public Slow_Prefab player_slow;
     public Shoot_Prefab player_shoot;
-    // public Player_Prefab player_script; 
+    public Player_Move player_script;
+    public Bullet_Prefab bullet_script;
+    public Health_Prefab player_health;
 
     [UnityTest]
     public IEnumerator testPlayerMovement()
@@ -26,7 +29,7 @@ public class PlayModeTests : MonoBehaviour
 
         Destroy(player);
     }
-    /*
+    
     [UnityTest]
     public IEnumerator testPlayerSpeedBounds()
     {
@@ -34,12 +37,13 @@ public class PlayModeTests : MonoBehaviour
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
                 ("Prefab/Player"));
 
-        player_script = player.GetComponent<Player_Prefab>(); // need to add player prefab
-        Assert.True(player_script.low_speed_limit <= player_script.speed <= player_script.high_speed_limit);
-
+        player_script = player.GetComponent<Player_Move>(); // need to add player prefab
+        Assert.True(player_script.low_speed_limit <= player_script.speed_limit);
+        Assert.True(player_script.speed_limit <= player_script.high_speed_limit);
+        yield return new WaitForSeconds(0.1f);
         Destroy(player);
     }
-    */
+    
     [UnityTest]
     public IEnumerator testSpawnPlayerBullet()
     {
@@ -99,21 +103,39 @@ public class PlayModeTests : MonoBehaviour
     [UnityTest]
     public IEnumerator testBulletHitObstacles()
     {
-        GameObject bullet =
+        GameObject bullet1 =
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
-                ("Prefab/Bullet"));
+                ("Prefab/Bullet2"), new Vector2(0, 0), Quaternion.identity);
 
-        GameObject meteor =
+        GameObject meteor1 =
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
-                ("Prefab/Meteor"));
+                ("Prefab/Meteor"), new Vector2(100f, 100f), Quaternion.identity);
 
-        meteor_script = meteor.GetComponent<Meteor_Prefab>();
+        GameObject bullet2 =
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>
+                ("Prefab/Bullet2"), new Vector2(0,0), Quaternion.identity);
+
+        GameObject meteor2 =
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>
+                ("Prefab/Meteor"), new Vector2(10.4f,1.4f), Quaternion.identity);
+
+        bullet1.GetComponent<CircleCollider2D>();
+        meteor1.GetComponent<CircleCollider2D>();
+        meteor_script = meteor1.GetComponent<Meteor_Prefab>();
+
+        bullet2.GetComponent<CircleCollider2D>();
+        meteor2.GetComponent<CircleCollider2D>();
+        meteor_script2 = meteor2.GetComponent<Meteor_Prefab>();
+
         yield return new WaitForSeconds(0.5f);
 
-        Assert.False(meteor_script.got_hit);
+        Assert.False(meteor_script.got_hit); //Distance from Bullet to Meteor is too far
+        Assert.True(meteor_script2.got_hit); //Distance from Bullet to Meteor close enough to collide
 
-        Destroy(bullet);
-        Destroy(meteor);
+        Destroy(bullet1);
+        Destroy(bullet2);
+        Destroy(meteor1);
+        Destroy(meteor2);
     }
 
     [UnityTest]
@@ -137,27 +159,28 @@ public class PlayModeTests : MonoBehaviour
 
         Destroy(meteor);
     }
-    /*
-        [UnityTest]
-        public IEnumerator testMeteorHitPlayer()
-        {
-            GameObject player =
-                MonoBehaviour.Instantiate(Resources.Load<GameObject>
-                    ("Prefab/Player"), new Vector3(0, 0, 0), Quaternion.identity);
+    
+    [UnityTest]
+    public IEnumerator testMeteorHitPlayer()
+    {
+        GameObject player =
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>
+                ("Prefab/Player"), new Vector3(0, 0, 0), Quaternion.identity);
 
-            GameObject meteor =
-                MonoBehaviour.Instantiate(Resources.Load<GameObject>
-                    ("Prefab/Meteor"), new Vector3(0, 0, 0), Quaternion.identity);
+        GameObject meteor =
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>
+                ("Prefab/Meteor"), new Vector3(0, 0, 0), Quaternion.identity);
 
-            meteor_script = meteor.GetComponent<Meteor_Prefab>();
-            player_script = player.GetComponent<Player_Prefab>();
-            yield return new WaitForSeconds(0.5f);
+        meteor_script = meteor.GetComponent<Meteor_Prefab>();
+        player_health = player.GetComponent<Health_Prefab>();
+        yield return new WaitForSeconds(0.5f);
 
-            Assert.True(meteor_script.got_hit);
-            Assert.True(player.hp == 2);
-        }
-        */
+        Assert.True(meteor_script.got_hit);
+        Assert.True(player_health.health == 2);
+    }
 
+    //System Testing
+    
     [UnityTest]
     public IEnumerator DoubleJump()
     {

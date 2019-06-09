@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 968299880967968963}
   - component: {fileID: 968299880967968962}
   - component: {fileID: 968299880967968961}
-  - component: {fileID: 968299880967968960}
+  - component: {fileID: 9171416968703693355}
   - component: {fileID: 968299880967968968}
   - component: {fileID: 968299880967968965}
   m_Layer: 9
@@ -312,10 +312,11 @@ MonoBehaviour:
     type: 3}
   obstacle_2: {fileID: 0}
   Enemy_1: {fileID: 0}
+  canvas: {fileID: 0}
   map_id: 0
   med_scale: 1.2
   long_scale: 2
---- !u!114 &968299880967968960
+--- !u!114 &9171416968703693355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,7 +325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 968299880967968969}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705f107cca021e5459183f6c2aae2911, type: 3}
+  m_Script: {fileID: 11500000, guid: dcc8de54e2b82e746a64981a5d918353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
@@ -362,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832ab005ac0d33c44b9c9ad4fe9845d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  play_health: {fileID: 968299880967968960}
+  play_health: {fileID: 0}
   play_shoot: {fileID: 968299882240526821}
   machine_gun_ammo: 30
   shotgun_ammo: 8
