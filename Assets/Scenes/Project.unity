@@ -46728,6 +46728,11 @@ PrefabInstance:
       propertyPath: i_frame
       value: 
       objectReference: {fileID: 1059325443}
+    - target: {fileID: 968299880967968960, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: scoreObject
+      value: 
+      objectReference: {fileID: 983054344}
     - target: {fileID: 968299880967968963, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
         type: 3}
       propertyPath: animator

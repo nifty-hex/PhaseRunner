@@ -34,4 +34,9 @@ public class Player_Score : MonoBehaviour
             score2 = player_score;
         }
     }
+
+    public int getScore()
+    {
+        return player_score;
+    }
 }

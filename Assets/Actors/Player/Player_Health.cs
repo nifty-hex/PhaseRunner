@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System.IO;
 
 public class Player_Health : MonoBehaviour {
 
@@ -19,6 +19,8 @@ public class Player_Health : MonoBehaviour {
     bool die = false;
 
     public float time_till_scene_change = 3f;
+
+    public Player_Score scoreObject;
 
     void Update () {
 		if (health <= 0)
@@ -54,6 +56,10 @@ public class Player_Health : MonoBehaviour {
                 else
                 {
                     SceneManager.LoadScene("GameOver");
+           
+                    var filetxt = File.CreateText("ScoreData.txt");
+                    filetxt.WriteLine(scoreObject.getScore());
+                    filetxt.Close();
                 }
             }
         }
