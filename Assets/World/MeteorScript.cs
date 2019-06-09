@@ -35,4 +35,9 @@ public class MeteorScript : MonoBehaviour
             drop_item.spawn_point.position = transform.position;
         }
     }
+    public void laserCollide()
+    {
+        Instantiate(explosion, transform.position, transform.rotation);
+        drop_item.spawn_point.position = transform.position;
+    }
 }

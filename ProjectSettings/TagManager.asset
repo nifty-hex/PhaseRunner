@@ -14,6 +14,7 @@ TagManager:
   - Enemy_Bullet
   - Charger_Jump_Point
   - Item_Pickup
+  - Gun
   layers:
   - Default
   - TransparentFX

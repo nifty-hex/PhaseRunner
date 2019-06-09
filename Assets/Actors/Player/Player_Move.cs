@@ -18,7 +18,6 @@ public class Player_Move : MonoBehaviour
     private bool can_double_jump;
     public float standard_gravity;
     public float gliding_gravity;
-    public float speed_increase_rate_per_frame;
     private Rigidbody2D rigidBody;
 
     private bool is_hit;
@@ -42,12 +41,6 @@ public class Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (speed_increase_rate_per_frame != 0)
-        {
-            high_speed_limit += Time.deltaTime * speed_increase_rate_per_frame;
-            low_speed_limit += Time.deltaTime * speed_increase_rate_per_frame;
-            normal_speed_limit += Time.deltaTime * speed_increase_rate_per_frame;
-        }
         if (is_hit)
         {
             hit_recover_time -= Time.deltaTime;

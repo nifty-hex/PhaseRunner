@@ -47,7 +47,7 @@ public class Item_Pickup : MonoBehaviour
                 play_shoot.ammo[2] = 50;
             }
             
-            //play_shoot.ammo[3] += railgun_ammo;
+            play_shoot.ammo[3] += railgun_ammo;
             Destroy(collision.gameObject);
         }
         
