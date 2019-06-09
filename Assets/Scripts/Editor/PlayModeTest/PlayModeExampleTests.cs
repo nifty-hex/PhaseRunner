@@ -25,8 +25,7 @@ public class PlayModeTests : MonoBehaviour
         float distance1 = player.transform.position.x;
         yield return new WaitForSeconds(0.5f);
         float distance2 = player.transform.position.x;
-        Assert.True(distance2 > distance1);
-
+        Assert.True(distance2 > distance1); 
         Destroy(player);
     }
     
@@ -44,6 +43,25 @@ public class PlayModeTests : MonoBehaviour
         Destroy(player);
     }
     
+    
+    [UnityTest]
+    public IEnumerator test_charger_movement()
+    {
+        GameObject charger =
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>
+                ("Prefab/Charger"));
+
+        Assert.IsNotNull(charger);
+
+        float position1 = charger.transform.position.x;
+        yield return new WaitForSeconds(0.5f);
+        float position2 = charger.transform.position.x;
+
+        Assert.False(position1 == position2);
+        Destroy(charger);
+    }
+    
+
     [UnityTest]
     public IEnumerator testSpawnPlayerBullet()
     {
@@ -56,7 +74,7 @@ public class PlayModeTests : MonoBehaviour
 
         Destroy(bullet);
     }
-    
+
     [UnityTest]
     public IEnumerator testPlayerBulletMovement()
     {
@@ -179,6 +197,9 @@ public class PlayModeTests : MonoBehaviour
 
         Assert.True(meteor_script.got_hit);
         Assert.True(player_health.health == 2);
+
+        Destroy(player);
+        Destroy(meteor);
     }
 
     //System Testing
@@ -220,6 +241,8 @@ public class PlayModeTests : MonoBehaviour
 
         Assert.True(height1 > height0);
         Assert.True(height2 > height1);
+
+        Destroy(player);
     }
 
     [UnityTest]
@@ -254,6 +277,8 @@ public class PlayModeTests : MonoBehaviour
         delta = Mathf.Abs(player_slow.time_slow_time - player_slow.upper_limit);
         Debug.Log("Fasting: " + delta);
         Assert.True(delta < tolerance);
+
+        Destroy(player);
     }
 
     [UnityTest]
@@ -276,16 +301,10 @@ public class PlayModeTests : MonoBehaviour
         Assert.NotNull(bullet1);
         Assert.NotNull(bullet2);
         Assert.AreNotSame(bullet1, bullet2);
-    }
 
-    /*
-    [UnityTest]
-    public IEnumerator Framerate()
-    {
-        SceneManager.LoadScene(2);
-        yield return new WaitForSeconds(0.5f);
-        Debug.Log(Application.targetFrameRate);
-        Assert.True(Application.targetFrameRate > 0);
+        Destroy(player);
+        Destroy(bullet1);
+        Destroy(bullet2);
     }
-    */
 }
+
