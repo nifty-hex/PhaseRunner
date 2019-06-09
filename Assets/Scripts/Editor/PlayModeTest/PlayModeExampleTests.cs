@@ -173,6 +173,8 @@ public class PlayModeTests : MonoBehaviour
 
         meteor_script = meteor.GetComponent<Meteor_Prefab>();
         player_health = player.GetComponent<Health_Prefab>();
+
+        Assert.True(player_health.health == 3);
         yield return new WaitForSeconds(0.5f);
 
         Assert.True(meteor_script.got_hit);
