@@ -23053,6 +23053,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 968299881720585931}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1059325447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 968299880967968963, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 968299881720585931}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059325442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06fc875611e3492418da2050e3ae4859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1059325449 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 968299880967968962, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
@@ -30147,9 +30159,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d3fc4b57a4b3141b74b0ded4a9ba2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  en_spawn: {fileID: 0}
+  en_spawn: {fileID: 1517245524}
   map_gen: {fileID: 1059325450}
   score: {fileID: 983054344}
+  dr_i: {fileID: 1076632513}
+  pl_m: {fileID: 1059325447}
+  spawn_ref: 10
+  mt_cooldown: 10
+  drop_plus: 5
+  faster_speed: 0.1
   increase: 100
 --- !u!4 &1267663022
 Transform:
@@ -44216,6 +44234,8 @@ MonoBehaviour:
   camera_y_offset: 10
   spawn_rate_time: 0
   spawn_rate: 400
+  spawn_refresh_rate: 0
+  spawn_type: 2
   player: {fileID: 1059325442}
   common_enemy_1: {fileID: 6641001137968860964, guid: 658679b5df450d245a59f6adbe05eb8f,
     type: 3}
