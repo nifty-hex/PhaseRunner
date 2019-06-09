@@ -23155,7 +23155,7 @@ MonoBehaviour:
   play_health: {fileID: 1059325451}
   will_drop: 0
   spawn_point: {fileID: 1076632512}
-  drop_item_chance: 40
+  drop_item_chance: 10
 --- !u!1 &1096976738
 GameObject:
   m_ObjectHideFlags: 0
@@ -30168,7 +30168,7 @@ MonoBehaviour:
   mt_cooldown: 10
   drop_plus: 5
   faster_speed: 0.1
-  increase: 100
+  increase: 200
 --- !u!4 &1267663022
 Transform:
   m_ObjectHideFlags: 0
@@ -44233,7 +44233,7 @@ MonoBehaviour:
   camera_x_offset: 20
   camera_y_offset: 10
   spawn_rate_time: 0
-  spawn_rate: 400
+  spawn_rate: 600
   spawn_refresh_rate: 0
   spawn_type: 2
   player: {fileID: 1059325442}
