@@ -11,7 +11,7 @@ public class PlayModeTests : MonoBehaviour
     public Jump_Prefab player_jump;
     public Slow_Prefab player_slow;
     public Shoot_Prefab player_shoot;
-    public Player_Move player_script;
+    //public Player_Move player_script;
     public Bullet_Prefab bullet_script;
     public Health_Prefab player_health;
 
@@ -29,6 +29,7 @@ public class PlayModeTests : MonoBehaviour
         Destroy(player);
     }
     
+    /*
     [UnityTest]
     public IEnumerator testPlayerSpeedBounds()
     {
@@ -42,7 +43,7 @@ public class PlayModeTests : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         Destroy(player);
     }
-    
+    */
     
     [UnityTest]
     public IEnumerator test_charger_movement()
