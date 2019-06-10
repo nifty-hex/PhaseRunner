@@ -53,7 +53,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Editor\PlayModeTest\BulletUnitTests.cs" />
+     <Compile Include="Assets\Scripts\Editor\PlayModeTest\ChargerUnitTests.cs" />
+     <Compile Include="Assets\Scripts\Editor\PlayModeTest\IntegrationTests.cs" />
+     <Compile Include="Assets\Scripts\Editor\PlayModeTest\MeteorUnitTests.cs" />
+     <Compile Include="Assets\Scripts\Editor\PlayModeTest\PlayerUnitTests.cs" />
      <Compile Include="Assets\Scripts\Editor\PlayModeTest\PlayModeExampleTests.cs" />
+     <Compile Include="Assets\Scripts\Editor\PlayModeTest\SystemTests.cs" />
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.0f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
  </Reference>
@@ -283,19 +289,19 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.0f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>C:/Users/Yasu/Documents/307game/PhaseRunner/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>C:/Users/arman/Documents/307/PhaseRunner/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>C:/Users/Yasu/Documents/307game/PhaseRunner/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>C:/Users/arman/Documents/307/PhaseRunner/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>C:/Users/Yasu/Documents/307game/PhaseRunner/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/arman/Documents/307/PhaseRunner/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>C:/Users/Yasu/Documents/307game/PhaseRunner/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>C:/Users/arman/Documents/307/PhaseRunner/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Purchasing">
- <HintPath>C:/Users/Yasu/Documents/307game/PhaseRunner/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+ <HintPath>C:/Users/arman/Documents/307/PhaseRunner/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
