@@ -3,14 +3,12 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 
-public class PlayModeTests : MonoBehaviour
+public class SystemTests : MonoBehaviour
 {
-
-    public Meteor_Prefab meteor_script;
-    public Meteor_Prefab meteor_script2;
     public Jump_Prefab player_jump;
     public Slow_Prefab player_slow;
     public Shoot_Prefab player_shoot;
+<<<<<<< HEAD
     //public Player_Move player_script;
     public Bullet_Prefab bullet_script;
     public Health_Prefab player_health;
@@ -215,6 +213,8 @@ public class PlayModeTests : MonoBehaviour
     }
 
     //System Testing
+=======
+>>>>>>> unitTests5
     
     [UnityTest]
     public IEnumerator DoubleJump()
