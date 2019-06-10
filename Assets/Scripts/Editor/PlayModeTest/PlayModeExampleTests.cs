@@ -8,10 +8,11 @@ public class SystemTests : MonoBehaviour
     public Jump_Prefab player_jump;
     public Slow_Prefab player_slow;
     public Shoot_Prefab player_shoot;
-<<<<<<< HEAD
     //public Player_Move player_script;
     public Bullet_Prefab bullet_script;
     public Health_Prefab player_health;
+    public Meteor_Prefab meteor_script;
+    public Meteor_Prefab meteor_script2;
 
     [UnityTest]
     public IEnumerator testPlayerMovement()
@@ -202,8 +203,6 @@ public class SystemTests : MonoBehaviour
     }
 
     //System Testing
-=======
->>>>>>> unitTests5
     
     [UnityTest]
     public IEnumerator DoubleJump()
