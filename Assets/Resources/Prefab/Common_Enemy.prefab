@@ -40,7 +40,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6641001137968860965}
   - component: {fileID: 6641001137968860969}
-  - component: {fileID: 4121392706317656524}
+  - component: {fileID: 6641001137968860970}
+  - component: {fileID: 5869625778192187056}
   - component: {fileID: 6641001137968860968}
   - component: {fileID: 6641001137968860971}
   - component: {fileID: 830915503038646295}
@@ -114,7 +115,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4121392706317656524
+--- !u!114 &6641001137968860970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6641001137968860964}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870ef32a8bae4e84198b0b38a839bd0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 2
+  x_speed: 0.5
+  x_speed_limit: 8
+  y_speed: 0.5
+  bullet: {fileID: 996843609656873469, guid: 853b96d87c6ca1b42b070486b1aaaeff, type: 3}
+  enemyExplosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
+    type: 3}
+  enemyFlash: {fileID: 1529778645200042479, guid: 7f66d210a105e004b8dda91217c7d11f,
+    type: 3}
+  flashSpawnPoint: {fileID: 2207668454967568763}
+  animator: {fileID: 830915503038646295}
+  fireRateTime: 0
+  fireRate: 225
+  offset: {x: 0, y: 4, z: 0}
+--- !u!114 &5869625778192187056
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,14 +150,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6641001137968860964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d8028a2825554f4cb7b171b69f187c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 9326064f477d01f4eb7ea502fa793a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
   x_speed: 0.5
   x_speed_limit: 8
   y_speed: 0.5
-  bullet: {fileID: 996843609656873469, guid: eac622f88710ce44d8604cc61da9229a, type: 3}
+  player: {fileID: 968299880967968969, guid: e09acc7167429534a96cd6b5bf635ae2, type: 3}
+  bullet: {fileID: 1685572702309686300, guid: 8c668715095ad9645903a4c5951a1ac3, type: 3}
   fireRateTime: 0
   fireRate: 225
   offset: {x: 0, y: 4, z: 0}
