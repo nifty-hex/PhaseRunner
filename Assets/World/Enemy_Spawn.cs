@@ -17,6 +17,8 @@ public class Enemy_Spawn : MonoBehaviour
     public GameObject common_enemy_2; //Charger
     public GameObject common_enemy_3; //Boomer
 
+    public EnemyFactory enfact;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,22 +37,8 @@ public class Enemy_Spawn : MonoBehaviour
             if (spawn_rate_time > spawn_rate)
             {
                 enemy_id = Random.Range(0, 4);
-                if (enemy_id == 0)
-                {
-                    Instantiate(common_enemy_1, new Vector2(player.transform.position.x + camera_x_offset,
-                        player.transform.position.y + camera_y_offset-10), Quaternion.identity);
-                }
-                else if (enemy_id == 1 || enemy_id == 2)
-                {
-                    Instantiate(common_enemy_2, new Vector2(player.transform.position.x + camera_x_offset+45,
-                        player.transform.position.y + camera_y_offset+40), Quaternion.identity);
-                }
-                else if (enemy_id == 3)
-                {
-                    Instantiate(common_enemy_3, new Vector2(player.transform.position.x + camera_x_offset + 30,
-                        player.transform.position.y + camera_y_offset + 90), Quaternion.identity);
-                }
-                number_of_enemies++;
+                enfact.buildEnemy(enemy_id);
+		number_of_enemies++;
                 spawn_rate_time = 0;
             }
         }

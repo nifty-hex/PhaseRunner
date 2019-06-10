@@ -139,13 +139,7 @@ MonoBehaviour:
   animator: {fileID: 830915503038646295}
   fireRateTime: 0
   fireRate: 225
-  firePoint_y_offset: -1
   offset: {x: 0, y: 4, z: 0}
-  player_center: {fileID: 21300000, guid: 591b917deb175e34e9556bc0ed632586, type: 3}
-  player_close: {fileID: 21300000, guid: d93c38d1d1521b346882d81aec948181, type: 3}
-  player_far: {fileID: 21300000, guid: e65672f3867e607449d334e9aec6a433, type: 3}
-  center_distance_from_player: 2
-  medium_distance_from_player: 4
 --- !u!58 &6641001137968860968
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +165,7 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6641001137968860964}
   m_BodyType: 0
-  m_Simulated: 1
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
