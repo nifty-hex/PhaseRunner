@@ -14,6 +14,7 @@ public class PlayModeTests : MonoBehaviour
     //public Player_Move player_script;
     public Bullet_Prefab bullet_script;
     public Health_Prefab player_health;
+    Common_Enemy_Prefab enemy_script;
 
     [UnityTest]
     public IEnumerator testPlayerMovement()
@@ -28,23 +29,33 @@ public class PlayModeTests : MonoBehaviour
         Assert.True(distance2 > distance1); 
         Destroy(player);
     }
-    
-    /*
+
     [UnityTest]
-    public IEnumerator testPlayerSpeedBounds()
+    public IEnumerator test_common_enemy_detect_player()
     {
+        GameObject enemy =
+            MonoBehaviour.Instantiate(Resources.Load<GameObject>
+                ("Prefab/Common_Enemy"));
+
         GameObject player =
             MonoBehaviour.Instantiate(Resources.Load<GameObject>
                 ("Prefab/Player"));
 
-        player_script = player.GetComponent<Player_Move>(); // need to add player prefab
-        Assert.True(player_script.low_speed_limit <= player_script.speed_limit);
-        Assert.True(player_script.speed_limit <= player_script.high_speed_limit);
-        yield return new WaitForSeconds(0.1f);
+        Assert.IsNotNull(enemy);
+        Assert.IsNotNull(player);
+
+        yield return new WaitForSeconds(0.5f);
+
+        enemy_script = enemy.GetComponent<Common_Enemy_Prefab>();
+        enemy_script.player = player;
+        GameObject player_found = enemy_script.player;
+
+        Assert.IsNotNull(enemy_script.player);
+
+        Destroy(enemy);
         Destroy(player);
     }
-    */
-    
+
     [UnityTest]
     public IEnumerator test_charger_movement()
     {
@@ -268,7 +279,6 @@ public class PlayModeTests : MonoBehaviour
         player_slow.slowDown();
         yield return new WaitForSeconds(1f);
         delta = Mathf.Abs(player_slow.time_slow_time - player_slow.lower_limit);
-        Debug.Log("Slowing: " + delta);
         Assert.True(delta < tolerance);
 
         yield return new WaitForSeconds(0.5f);
@@ -276,7 +286,6 @@ public class PlayModeTests : MonoBehaviour
         player_slow.fastUp();
         yield return new WaitForSeconds(1f);
         delta = Mathf.Abs(player_slow.time_slow_time - player_slow.upper_limit);
-        Debug.Log("Fasting: " + delta);
         Assert.True(delta < tolerance);
 
         Destroy(player);

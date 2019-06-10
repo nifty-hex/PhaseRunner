@@ -23,7 +23,6 @@ public class Slow_Prefab : MonoBehaviour
 
     public void slowDown()
     {
-        Debug.Log("Slowing");
         while (time_slow_time > lower_limit)
         {
             time_slow_time -= (Time.deltaTime);
@@ -32,7 +31,6 @@ public class Slow_Prefab : MonoBehaviour
 
     public void fastUp()
     {
-        Debug.Log("Fasting");
         while (time_slow_time < upper_limit)
         {
             time_slow_time += (Time.deltaTime);
