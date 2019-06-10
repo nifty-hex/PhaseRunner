@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Test{
 public class Charge_Prefab : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
@@ -51,4 +52,5 @@ public class Charge_Prefab : MonoBehaviour
             Destroy(gameObject);
         }
     }
+}
 }

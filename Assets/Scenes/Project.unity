@@ -44240,11 +44240,11 @@ MonoBehaviour:
   camera_x_offset: 20
   camera_y_offset: 10
   player: {fileID: 1059325442}
-  common_enemy_1: {fileID: 6641001137968860964, guid: 07c6e4f56ee32044499005e38a546eca,
+  common_enemy_1: {fileID: 6641001137968860964, guid: 658679b5df450d245a59f6adbe05eb8f,
     type: 3}
   common_enemy_2: {fileID: 5118922387325412581, guid: 30f460706f6597d4389eff1eadbef13d,
     type: 3}
-  common_enemy_3: {fileID: 8492467396979146367, guid: 6588c9406dbf03442bbc2d6727a5c6e3,
+  common_enemy_3: {fileID: 8492467396979146367, guid: 7fcec658ad81aa24fabed53a455e5fbd,
     type: 3}
 --- !u!1 &1550809095
 GameObject:
