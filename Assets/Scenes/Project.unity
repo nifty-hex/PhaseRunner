@@ -44092,6 +44092,7 @@ GameObject:
   - component: {fileID: 1517245520}
   - component: {fileID: 1517245519}
   - component: {fileID: 1517245518}
+  - component: {fileID: 1517245525}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -44222,6 +44223,28 @@ MonoBehaviour:
   common_enemy_2: {fileID: 5118922387325412581, guid: 30f460706f6597d4389eff1eadbef13d,
     type: 3}
   common_enemy_3: {fileID: 8492467396979146367, guid: 7fcec658ad81aa24fabed53a455e5fbd,
+    type: 3}
+  enfact: {fileID: 1517245525}
+--- !u!114 &1517245525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517245517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee3042004765b446b1d0cb750ec9888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera_x_offset: 20
+  camera_y_offset: 10
+  player: {fileID: 1059325442}
+  common_enemy_1: {fileID: 6641001137968860964, guid: 07c6e4f56ee32044499005e38a546eca,
+    type: 3}
+  common_enemy_2: {fileID: 5118922387325412581, guid: 30f460706f6597d4389eff1eadbef13d,
+    type: 3}
+  common_enemy_3: {fileID: 8492467396979146367, guid: 6588c9406dbf03442bbc2d6727a5c6e3,
     type: 3}
 --- !u!1 &1550809095
 GameObject:
