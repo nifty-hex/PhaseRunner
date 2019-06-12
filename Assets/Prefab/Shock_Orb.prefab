@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24662882e35921d4c9dea3c5e63bf119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shockwave: {fileID: 1962917032436738488, guid: 4e9aa5bff66631f449af175682850996,
+  shockwave: {fileID: 3807055078515933279, guid: 4e9aa5bff66631f449af175682850996,
     type: 3}
 --- !u!212 &6292453372332451333
 SpriteRenderer:
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0.2361821, b: 0.023584902, a: 1}
+  m_Color: {r: 0.8000001, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
