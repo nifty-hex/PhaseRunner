@@ -9,11 +9,11 @@ public class MusicManagerScript : MonoBehaviour
     static AudioSource audioSrc;
     public static string currentScene;
     public float pitch = 1.0f;
+    public static float volume = 1.0f;
     private GameObject[] getCount;
     private static bool changeMusic = true;
-    private static int hardScoreThreshold = 100;
-    private static int extremeScoreThreshold = 200;
-
+    private static int hardScoreThreshold = 200;
+    private static int extremeScoreThreshold = 400;
 
     private void Awake()
     {
@@ -71,6 +71,7 @@ public class MusicManagerScript : MonoBehaviour
     public static void PlayMusic(string song)
     {
         audioSrc.Stop();
+        audioSrc.volume = volume;
         switch (song)
         {
             case "menu music":
@@ -80,6 +81,7 @@ public class MusicManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(easyMusic);
                 break;
             case "hard music":
+                audioSrc.volume = 0.7f;
                 audioSrc.PlayOneShot(hardMusic);
                 break;
             case "extreme music":

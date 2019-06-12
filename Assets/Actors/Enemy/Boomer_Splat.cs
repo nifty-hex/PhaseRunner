@@ -22,6 +22,7 @@ public class Boomer_Splat : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            SoundManagerScript.PlaySound("boomer bomb");
             Instantiate(shockwave, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
