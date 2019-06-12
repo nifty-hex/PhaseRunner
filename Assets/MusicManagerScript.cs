@@ -9,7 +9,6 @@ public class MusicManagerScript : MonoBehaviour
     static AudioSource audioSrc;
     public static string currentScene;
     public float pitch = 1.0f;
-    public static float volume = 1.0f;
     private GameObject[] getCount;
     private static bool changeMusic = true;
     private static int hardScoreThreshold = 200;
@@ -41,7 +40,7 @@ public class MusicManagerScript : MonoBehaviour
     public void CheckScene()
     {
         Scene scene = SceneManager.GetActiveScene();
-
+        
         if(scene.name == "Project")
             CheckScore();
 
@@ -71,7 +70,6 @@ public class MusicManagerScript : MonoBehaviour
     public static void PlayMusic(string song)
     {
         audioSrc.Stop();
-        audioSrc.volume = volume;
         switch (song)
         {
             case "menu music":

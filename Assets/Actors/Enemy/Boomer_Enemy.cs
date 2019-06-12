@@ -48,7 +48,7 @@ public class Boomer_Enemy : MonoBehaviour
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
             drop_item.will_drop = true;
-            SoundManagerScript.PlaySound("Explosion");
+            SoundManagerScript.PlaySound("boomer die");
             Destroy(gameObject);
         }
         if (drop_item.will_drop)

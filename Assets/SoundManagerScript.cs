@@ -7,7 +7,7 @@ public class SoundManagerScript : MonoBehaviour
 {
     public static AudioClip playerHitSound, playerDieSound, playerJumpSound, slowDownSound, speedUpSound,
                             pistolSound, shotgunSound, railgunSound, machinegunSound,
-                            enemyDestroySound, enemyShootSound, boomerShootSound, boomerHitSound, boomerBombSound,
+                            enemyDestroySound, enemyShootSound, boomerShootSound, boomerHitSound, boomerBombSound, boomerDieSound,
                             heartPickupSound, reloadSound, alarmSound, glassBreakSound, meteorSound, meteorDropSound;
     static AudioSource audioSrc;
     public float pitch = 1.0f;
@@ -35,6 +35,7 @@ public class SoundManagerScript : MonoBehaviour
         enemyDestroySound = Resources.Load<AudioClip>("Sound/Explosion");
         boomerHitSound = Resources.Load<AudioClip>("Sound/boomer hit");
         boomerBombSound = Resources.Load<AudioClip>("Sound/boomer bomb");
+        boomerDieSound = Resources.Load<AudioClip>("Sound/boomer die");
         meteorSound = Resources.Load<AudioClip>("Sound/meteor");
         enemyShootSound = Resources.Load<AudioClip>("Sound/super pew");
         boomerShootSound = Resources.Load<AudioClip>("Sound/super pew 2");
@@ -71,6 +72,9 @@ public class SoundManagerScript : MonoBehaviour
                 break;
             case "boomer bomb":
                 audioSrc.PlayOneShot(boomerBombSound);
+                break;
+            case "boomer die":
+                audioSrc.PlayOneShot(boomerDieSound);
                 break;
             case "meteor":
                 audioSrc.volume = 0.1f;
