@@ -10,6 +10,7 @@ public class window : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player_Bullet" || collision.gameObject.tag == "Player" )
         {
+        	SoundManagerScript.PlaySound("glass break");
             animator.SetBool("broke", true);
             Destroy(gameObject, 0.125f);
         }
