@@ -63,8 +63,10 @@ public class Boomer_Enemy : MonoBehaviour
         {
             for (int i = 0; i < max_splatters; i++)
             {
+                SoundManagerScript.PlaySound("super pew 2");
                 Instantiate(splatters, transform.position, Quaternion.identity);
             }
+            SoundManagerScript.PlaySound("boomer hit");
             hp--;
         }
     }
