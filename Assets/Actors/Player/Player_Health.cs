@@ -67,7 +67,7 @@ public class Player_Health : MonoBehaviour {
     {
         if (i_frame.invin == false)
         {
-            if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy_Bullet" || collision.gameObject.tag == "Obstacles")
+            if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy_Bullet" || collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Window")
             {
                 SoundManagerScript.PlaySound("hurt sound");
                 health--;

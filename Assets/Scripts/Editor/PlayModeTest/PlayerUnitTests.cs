@@ -22,7 +22,7 @@ public class PlayerUnitTests : MonoBehaviour
         Destroy(player);
     }
 
-    [UnityTest]
+    /*[UnityTest]
     public IEnumerator testPlayerSpeedBounds()
     {
         GameObject player =
@@ -34,5 +34,5 @@ public class PlayerUnitTests : MonoBehaviour
         Assert.True(player_script.speed_limit <= player_script.high_speed_limit);
         yield return new WaitForSeconds(0.1f);
         Destroy(player);
-    }
+    }*/
 }

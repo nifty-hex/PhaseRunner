@@ -23,6 +23,7 @@ public class Boomer_Splat : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             Instantiate(shockwave, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
         
     }

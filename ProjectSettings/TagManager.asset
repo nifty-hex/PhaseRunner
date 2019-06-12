@@ -17,6 +17,7 @@ TagManager:
   - music
   - sound
   - Mobile_Buttons
+  - Window
   layers:
   - Default
   - TransparentFX
