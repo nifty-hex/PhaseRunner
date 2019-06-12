@@ -95,6 +95,7 @@ public class Common_Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player_Bullet")
         {
             hp--;
+            print("OUCH, player hit me!");
             Destroy(collision.gameObject);
         }
     }

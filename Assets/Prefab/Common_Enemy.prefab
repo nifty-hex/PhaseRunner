@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 6641001137968860965}
   - component: {fileID: 6641001137968860969}
   - component: {fileID: 6641001137968860970}
-  - component: {fileID: 6641001137968860968}
+  - component: {fileID: 5210146335967775654}
   - component: {fileID: 6641001137968860971}
   - component: {fileID: 830915503038646295}
   m_Layer: 11
@@ -140,7 +140,7 @@ MonoBehaviour:
   fireRateTime: 0
   fireRate: 225
   offset: {x: 0, y: 4, z: 0}
---- !u!58 &6641001137968860968
+--- !u!58 &5210146335967775654
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,9 +153,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05606658}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.14863953
+  m_Radius: 0.24
 --- !u!50 &6641001137968860971
 Rigidbody2D:
   serializedVersion: 4
