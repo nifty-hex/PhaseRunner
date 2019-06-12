@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5210146335967775654}
   - component: {fileID: 6641001137968860971}
   - component: {fileID: 830915503038646295}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: Common_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Radius: 0.16575977
 --- !u!50 &6641001137968860971
 Rigidbody2D:
   serializedVersion: 4
