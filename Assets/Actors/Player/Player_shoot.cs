@@ -24,7 +24,7 @@ public class Player_shoot : MonoBehaviour
     public int[] ammo;
     private int totalBulletTypes = 4;
     private LineRenderer line;
-    private bool laserOn;
+    private float laserTime;
     // Use this for initialization
     void Start()
     {
@@ -41,7 +41,11 @@ public class Player_shoot : MonoBehaviour
         this.GetComponent<SpriteRenderer>().sprite = curGun;
         line = GetComponent<LineRenderer>();
         line.enabled = false;
+        laserTime = 0;
         line.useWorldSpace = true;
+        //line.material.color = Color.magenta;
+        line.startWidth = 0.1f;
+        line.endWidth = 0.1f;
     }
 
     // Update is called once per frame
@@ -55,6 +59,10 @@ public class Player_shoot : MonoBehaviour
         shootGun();
         if (ammo[gunType] == 0)
             gunType = 0;
+                if (laserTime > Time.time)
+            line.enabled = true;
+        else
+            line.enabled = false;
     }
 
     void faceMouse()
@@ -232,95 +240,62 @@ public class Player_shoot : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && nextFire >= fireRate && ammo[gunType] != 0)
         {
-            line.enabled = true;
+            laserTime = Time.time + 0.5f;
             flashSpawnPoint.transform.localPosition = new Vector3(0.96f, 0.05f, 0f);
             Instantiate(playerFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
             RaycastHit2D[] hits;
             hits = Physics2D.RaycastAll(flashSpawnPoint.transform.position, transform.right, 20.0F);
-
+            line.SetPosition(0, flashSpawnPoint.transform.position);
+            Ray2D ray = new Ray2D(flashSpawnPoint.transform.position, transform.right);
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, Vector2.right, 20);
             for (int i = 0; i < hits.Length; i++)
             {
-                RaycastHit2D hit = hits[i];
-                Debug.DrawLine(transform.position, hit.point);
-                Debug.Log(hit.collider.gameObject.tag);
-                Debug.Log(hit.collider.gameObject.name);
+                hit = hits[i];
+                //Debug.Log(hit.collider.gameObject.tag);
 
                 if (hit.collider.gameObject.tag == "Ground" || hit.collider.gameObject.tag == "Wall")
                 {
-                    line.SetPosition(1, hit.point);
                     i = hits.Length;
                 }
                 else
                 {
-                    if (hit.collider.gameObject.tag == "Obstacles")
+                    if (hit.collider.gameObject.tag == "Obstacles" || hit.collider.gameObject.tag == "Enemy_Bullet")
                     {
                         if (hit.collider.gameObject.name == "Meteor(Clone)")
                         {
                             MeteorScript mtS = hit.collider.gameObject.GetComponent<MeteorScript>();
                             mtS.laserCollide();
                         }
-                        else
-                            Destroy(hit.collider.gameObject);
+                        Destroy(hit.collider.gameObject);
                     }
                     if (hit.collider.gameObject.tag == "Enemy")
                     {
                         Boomer_Enemy a = hit.collider.gameObject.GetComponent<Boomer_Enemy>();
                         Charge_Enemy b = hit.collider.gameObject.GetComponent<Charge_Enemy>();
                         Common_Enemy c = hit.collider.gameObject.GetComponent<Common_Enemy>();
-
-                        a.hp -= 3;
-                        b.hp -= 3;
-                        c.hp -= 3;
-                    } 
+                        if (a)
+                            a.hp -= 3;
+                        if (b)
+                            b.hp -= 3;
+                        if (c)
+                            c.hp -= 3;
+                    }
                 }
             }
+            if (hits.Length != 0)
+            {
+                if (hit.collider.gameObject.tag == "Ground" || hit.collider.gameObject.tag == "Wall")
+                    line.SetPosition(1, hit.point);
+                else
+                    line.SetPosition(1, ray.GetPoint(20));
+            }
+            else
+                line.SetPosition(1, ray.GetPoint(20));
             nextFire = 0;
+            SoundManagerScript.PlaySound("rail gun");
             if (ammo[gunType] != -1)
                 ammo[gunType]--;
-
         }
-        else
-            line.enabled = false;
     }
-    /*    IEnumerator Firelaser()
-            {
-                line.enabled = true;
-                while (laserOn)
-                {
-                    Ray ray = new Ray(transform.position, transform.right);
 
-                    line.SetPosition(0, ray.origin);
-                    line.SetPosition(1, ray.GetPoint(100));
-                    laserOn = false;
-                    yield return null;
-                }
-                line.enabled = false;
-
-
-            } */
 }
-
-// while (distance > 0)
-//{ 
-/*Ray ray = new Ray(src, transform.right);
-//RaycastHit2D hit;
-line.SetPosition(0, ray.origin);
-//line.SetPosition(1, ray.GetPoint(100));
-hit = Physics2D.Raycast(ray.origin, Vector2.right, distance);
-if (!hit.collider)
-{
-    line.SetPosition(1, ray.GetPoint(distance));
-}
-else
-{
-
-        distance -= (int)Mathf.Sqrt(Mathf.Pow(hit.point.x - src.x, 2) + Mathf.Pow(hit.point.y - src.y, 2));
-        if (src == hit.point)
-            distance = 0;
-        src = hit.point;
-    }
-}
-Debug.DrawLine(ray.origin, hit.point);
-//  }
-//hit = Physics2D.Raycast(ray.origin, Vector2.right, distance);
-*/
