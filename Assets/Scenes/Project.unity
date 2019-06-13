@@ -45083,6 +45083,81 @@ PrefabInstance:
       propertyPath: m_PlaneDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4913460327546736248, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327546736248, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327546736248, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327546736248, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327546736248, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 510
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327546736248, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327176137416, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327176137416, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327176137416, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 310
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327967230551, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327967230551, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327967230551, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327967230550, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327967230550, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: m_Name
+      value: Change Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913460327967230541, guid: 460eccbfc74fab84c9035ad13a7faafd,
+        type: 3}
+      propertyPath: Name
+      value: Change Gun
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 460eccbfc74fab84c9035ad13a7faafd, type: 3}
 --- !u!1 &1678803033
@@ -47451,7 +47526,7 @@ PrefabInstance:
     - target: {fileID: 4768448717391924725, guid: 4d9f09e6b1f814a4b954a8909378c8f8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4768448717391924725, guid: 4d9f09e6b1f814a4b954a8909378c8f8,
         type: 3}
@@ -47476,7 +47551,7 @@ PrefabInstance:
     - target: {fileID: 4768448717391924725, guid: 4d9f09e6b1f814a4b954a8909378c8f8,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4768448717391924725, guid: 4d9f09e6b1f814a4b954a8909378c8f8,
         type: 3}
@@ -47486,7 +47561,7 @@ PrefabInstance:
     - target: {fileID: 4768448717391924725, guid: 4d9f09e6b1f814a4b954a8909378c8f8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4768448717391924725, guid: 4d9f09e6b1f814a4b954a8909378c8f8,
         type: 3}

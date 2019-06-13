@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityStandardAssets.CrossPlatformInput;
 
 
 public class Player_shoot : MonoBehaviour
@@ -51,6 +53,11 @@ public class Player_shoot : MonoBehaviour
 
     void faceMouse()
     {
+#if UNITY_IOS || UNITY_ANDROID
+	if(EventSystem.current.IsPointerOverGameObject())
+	{;}
+#endif
+	
         //Vector3 mouseWorldPos = camera.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
         var mousePos = Input.mousePosition;
         mousePos.z = 12;
@@ -82,7 +89,7 @@ public class Player_shoot : MonoBehaviour
             //      homingGun();
             //    break;
             /*case 4:
-                if (Input.GetMouseButton(0) && nextFire >= fireRate)
+                if (wrapInput.Fire() && nextFire >= fireRate)
                 {
                     GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
                     Bullet_Script bulletScript = bullet.GetComponent<Bullet_Script>();
@@ -101,12 +108,17 @@ public class Player_shoot : MonoBehaviour
             gunType = 0;
         }
     }
-    //*input
+    
     void changeGun()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+	int temp = WrapInput.switchGun();
+	if(temp != -1)
+	{
+		gunType = temp;
+	}
+
+        if (gunType == 0)
         {
-            gunType = 0;
             curGun = gun0;
 /*            Color tmp = transform.GetChild(0).GetComponent<SpriteRenderer>().color;
             tmp.a = 0f;
@@ -122,14 +134,12 @@ public class Player_shoot : MonoBehaviour
         }
         //if (Input.GetKeyDown(KeyCode.Alpha4) && ammo[3] != 0)
         //  gunType = 3;
-        if (Input.GetKeyDown(KeyCode.Alpha3) && ammo[2] != 0)
+        if (gunType == 2 && ammo[2] != 0)
         {
-            gunType = 2;
             curGun = gun2;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && ammo[1] != 0)
+        if (gunType == 1 && ammo[1] != 0)
         {
-            gunType = 1;
             curGun = gun1;
         }
         //Debug.Log("Changing type");
@@ -137,7 +147,7 @@ public class Player_shoot : MonoBehaviour
     }
     void regularGun()
     {
-        if (Input.GetMouseButton(0) && nextFire >= fireRate)
+        if (WrapInput.Fire() && nextFire >= fireRate)
         {
             flashSpawnPoint.transform.localPosition = new Vector3(0.53f, 0.02f, 0f);
             Instantiate(playerFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
@@ -150,7 +160,7 @@ public class Player_shoot : MonoBehaviour
     void machineGun()
     {
         float fasterFireRate = fireRate / 2;
-        if (Input.GetMouseButton(0) && nextFire >= fasterFireRate && ammo[gunType] != 0)
+        if (WrapInput.Fire() && nextFire >= fasterFireRate && ammo[gunType] != 0)
         {
             flashSpawnPoint.transform.localPosition = new Vector3(0.82f, 0.06f, 0f);
             Instantiate(playerFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation, flashSpawnPoint.transform);
@@ -166,7 +176,7 @@ public class Player_shoot : MonoBehaviour
     {
         float shootAngle = 30; //total angle between 2 end bullets
         int bulletCount = 3; //minimum 2
-        if (Input.GetMouseButton(0) && nextFire >= fireRate && ammo[gunType] != 0)
+        if (WrapInput.Fire() && nextFire >= fireRate && ammo[gunType] != 0)
         {
             //Debug.Log("Shotgun");
 
@@ -196,7 +206,7 @@ public class Player_shoot : MonoBehaviour
     }
     void homingGun()
     {
-        if (Input.GetMouseButton(0) && nextFire >= fireRate && ammo[gunType] != 0)
+        if (WrapInput.Fire() && nextFire >= fireRate && ammo[gunType] != 0)
         {
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
             bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(player.GetComponent<Rigidbody2D>().velocity.x, 0);

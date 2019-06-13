@@ -36,7 +36,7 @@ public class Slow_Time : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         time_scale_tracker = Time.timeScale;
-        if (WrapInput.TimeSlow() && time_slow_limit > 0 && over_limit == false)
+        if (WrapInput.TimeSlow(time_slow_limit, over_limit))// && time_slow_limit > 0 && over_limit == false)
         {
             time_slow_limit -= (Time.deltaTime * time_loss_speed);
             is_time_slow = true;
