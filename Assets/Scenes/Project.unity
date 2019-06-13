@@ -30197,7 +30197,7 @@ MonoBehaviour:
   mt_cooldown: 10
   drop_plus: 5
   faster_speed: 0.1
-  increase: 200
+  increase: 100
 --- !u!4 &1267663022
 Transform:
   m_ObjectHideFlags: 0
@@ -44258,12 +44258,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1ed7215aae4484eb26a5ece83c6499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_enemy_num: 8
+  max_enemy_num: 4
   number_of_enemies: 0
   camera_x_offset: 20
   camera_y_offset: 10
   spawn_rate_time: 0
-  spawn_rate: 600
+  spawn_rate: 400
   spawn_refresh_rate: 0
   spawn_type: 2
   player: {fileID: 1059325442}
@@ -46870,6 +46870,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 968299880967968961, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: obstacles_freq
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 968299880967968960, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
         type: 3}
       propertyPath: bg
@@ -46885,6 +46890,22 @@ PrefabInstance:
       propertyPath: scoreObject
       value: 
       objectReference: {fileID: 983054344}
+    - target: {fileID: 968299882240526821, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: gun3
+      value: 
+      objectReference: {fileID: 21300002, guid: 66cc8ccf13205d24ea7138d4421aa195,
+        type: 3}
+    - target: {fileID: 968299882240526821, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 968299880967968965, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: railgun_ammo
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 301e9fde17d676e49bfe686f6dbe7e4f, type: 3}
 --- !u!1001 &4768448717440742586

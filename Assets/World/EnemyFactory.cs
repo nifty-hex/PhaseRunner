@@ -16,12 +16,12 @@ public class EnemyFactory : MonoBehaviour
 
     public void buildEnemy(int enemy_id)
     {
-	if (enemy_id == 0 || enemy_id == 3 || enemy_id == 6 )
+	if (enemy_id == 0 || enemy_id == 2 || enemy_id == 6 )
 	{
 	    Instantiate(common_enemy_1, new Vector2(player.transform.position.x + camera_x_offset,
 		player.transform.position.y + camera_y_offset-10), Quaternion.identity);
 	}
-	else if (enemy_id == 1 || enemy_id == 2 || enemy_id == 5 || enemy_id == 7)
+	else if (enemy_id == 1 || enemy_id == 3 || enemy_id == 5 || enemy_id == 7)
 	{
 	    Instantiate(common_enemy_2, new Vector2(player.transform.position.x + camera_x_offset+45,
 		player.transform.position.y + camera_y_offset+40), Quaternion.identity);
