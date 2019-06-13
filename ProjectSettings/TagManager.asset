@@ -4,20 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Firewall
   - Enemy
-  - Wall
-  - Obstacles
-  - Banners
+  - Fire
   - Player_Bullet
-  - Enemy_Bullet
-  - Charger_Jump_Point
-  - Item_Pickup
-  - music
-  - sound
   - Mobile_Buttons
-  - Window
+  - Enemy_Bullet
+  - Item_Pickup
+  - Obstacles
   layers:
   - Default
   - TransparentFX
@@ -27,19 +20,19 @@ TagManager:
   - UI
   - 
   - 
-  - Firewall_lay
-  - Player_lay
-  - Platform_lay
-  - Enemy_lay
-  - Play_Bullet_lay
-  - Crates_Lay
-  - Background_Lay
-  - Banner_Lay
-  - Enemy_Bullet_Lay
-  - Charger_Jump_Lay
-  - Charger_Lay
-  - Item_Pickup
-  - UI2
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -52,12 +45,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 3363731857
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Foreground
-    uniqueID: 3411856667
     locked: 0

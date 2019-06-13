@@ -7,7 +7,7 @@ public class SoundManagerScript : MonoBehaviour
 {
     public static AudioClip playerHitSound, playerDieSound, playerJumpSound, slowDownSound, speedUpSound,
                             pistolSound, shotgunSound, railgunSound, machinegunSound,
-                            enemyDestroySound, enemyShootSound, boomerShootSound, boomerHitSound, boomerBombSound,
+                            enemyDestroySound, enemyShootSound, boomerShootSound, boomerHitSound, boomerBombSound, boomerDieSound,
                             heartPickupSound, reloadSound, alarmSound, glassBreakSound, meteorSound, meteorDropSound;
     static AudioSource audioSrc;
     public float pitch = 1.0f;
@@ -35,6 +35,7 @@ public class SoundManagerScript : MonoBehaviour
         enemyDestroySound = Resources.Load<AudioClip>("Sound/Explosion");
         boomerHitSound = Resources.Load<AudioClip>("Sound/boomer hit");
         boomerBombSound = Resources.Load<AudioClip>("Sound/boomer bomb");
+        boomerDieSound = Resources.Load<AudioClip>("Sound/boomer die");
         meteorSound = Resources.Load<AudioClip>("Sound/meteor");
         enemyShootSound = Resources.Load<AudioClip>("Sound/super pew");
         boomerShootSound = Resources.Load<AudioClip>("Sound/super pew 2");
@@ -72,8 +73,11 @@ public class SoundManagerScript : MonoBehaviour
             case "boomer bomb":
                 audioSrc.PlayOneShot(boomerBombSound);
                 break;
+            case "boomer die":
+                audioSrc.PlayOneShot(boomerDieSound);
+                break;
             case "meteor":
-                audioSrc.volume = 0.1f;
+                audioSrc.volume = 0.08f;
                 audioSrc.PlayOneShot(meteorSound);
                 break;
             case "speed up":
@@ -83,6 +87,7 @@ public class SoundManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(slowDownSound);
                 break;
             case "reload":
+                audioSrc.volume = 0.05f;
                 audioSrc.PlayOneShot(reloadSound);
                 break;
             case "jump":
@@ -113,9 +118,11 @@ public class SoundManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(playerDieSound);
                 break;
             case "glass break":
+                audioSrc.volume = 0.06f;
                 audioSrc.PlayOneShot(glassBreakSound);
                 break;
             case "heart pickup":
+                audioSrc.volume = 0.3f;
                 audioSrc.PlayOneShot(heartPickupSound);
                 break;
         }

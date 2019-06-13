@@ -47,8 +47,11 @@ public class Item_Pickup : MonoBehaviour
             {
                 play_shoot.ammo[2] = 50;
             }
-            SoundManagerScript.PlaySound("reload");
+            play_shoot.ammo[3] += railgun_ammo;
+
+	    SoundManagerScript.PlaySound("reload");
             //play_shoot.ammo[3] += railgun_ammo;
+            
             Destroy(collision.gameObject);
         }
         

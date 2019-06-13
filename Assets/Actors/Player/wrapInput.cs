@@ -6,6 +6,9 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class WrapInput : MonoBehaviour
 {
+    public static int gunType = 0;
+    public static bool timeSlowOn = false;
+
     public static bool ResetScene()
     {
 
@@ -56,12 +59,25 @@ public class WrapInput : MonoBehaviour
 #endif
     }
 
-    public static bool TimeSlow()
+    public static bool TimeSlow(float time_slow_limit, bool over_limit)
     {
 #if  UNITY_STANDALONE// || UNITY_WEBPLAYER
-        return Input.GetKey(KeyCode.LeftShift);
+        return Input.GetKey(KeyCode.LeftShift) && time_slow_limit > 0 && over_limit == false;
 #else
-        return CrossPlatformInputManager.GetButton("TimeSlow");
+        if(CrossPlatformInputManager.GetButtonUp("TimeSlow"))
+	{
+		timeSlowOn = !timeSlowOn;
+	}
+
+	if(timeSlowOn)
+	{
+		if(time_slow_limit<=0 || over_limit == true)
+		{
+			timeSlowOn = false;
+		}
+	}
+
+	return timeSlowOn;
 #endif
     }
 
@@ -98,6 +114,35 @@ public class WrapInput : MonoBehaviour
          }
          return transform.position;*/
 #endif
+    }
+
+	
+	
+    public static int switchGun()
+    {
+#if UNITY_STANDALONE// || UNITY_WEBPLAYER
+	if(Input.GetKeyDown(KeyCode.Alpha1))
+	{
+		return 0;
+	}
+	if(Input.GetKeyDown(KeyCode.Alpha3))
+	{
+		return 2;
+	}
+	if(Input.GetKeyDown(KeyCode.Alpha2))
+	{
+		return 1;
+	}
+
+#else   
+	if(CrossPlatformInputManager.GetButtonUp("Change Gun"))
+	{
+		gunType = gunType + 1;
+		return gunType % 3;
+	}
+#endif	
+
+	return -1;	
     }
 
 
