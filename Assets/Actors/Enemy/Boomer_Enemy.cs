@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boomer_Enemy : MonoBehaviour
+public class Boomer_Enemy : MonoBehaviour, EnemyInterface
 {
     private GameObject player;
     public GameObject splatters;
@@ -34,16 +34,23 @@ public class Boomer_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    	CheckMove();
+        CheckHealth();
+        CheckDrop();
+    }
 
-        if (rigidBody.velocity.x < x_speed_limit)
+    public void CheckMove() {
+    	if (rigidBody.velocity.x < x_speed_limit)
         {
             rigidBody.AddForce(new Vector2(x_speed, 0), ForceMode2D.Impulse);
         }
         Vector3 desiredPosition = player.transform.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, y_speed * Time.deltaTime);
         transform.position = new Vector2(transform.position.x, smoothedPosition.y);
+    }
 
-        if (hp <= 0)
+    public void CheckHealth() {
+    	if (hp <= 0)
         {
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
@@ -51,13 +58,16 @@ public class Boomer_Enemy : MonoBehaviour
             SoundManagerScript.PlaySound("boomer die");
             Destroy(gameObject);
         }
-        if (drop_item.will_drop)
+    }
+
+    public void CheckDrop() {
+    	if (drop_item.will_drop)
         {
             drop_item.spawn_point.position = transform.position;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player_Bullet")
         {
