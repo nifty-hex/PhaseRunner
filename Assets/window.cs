@@ -15,4 +15,10 @@ public class window : MonoBehaviour
             Destroy(gameObject, 0.125f);
         }
     }
+    public void laserCollide()
+    {
+        SoundManagerScript.PlaySound("glass break");
+        animator.SetBool("broke", true);
+        Destroy(gameObject, 0.125f);
+    }
 }

@@ -261,11 +261,12 @@ public class Player_shoot : MonoBehaviour
                 {
                     if (hit.collider.gameObject.tag == "Obstacles" || hit.collider.gameObject.tag == "Enemy_Bullet")
                     {
-                        if (hit.collider.gameObject.name == "Meteor(Clone)")
-                        {
-                            MeteorScript mtS = hit.collider.gameObject.GetComponent<MeteorScript>();
+                        MeteorScript mtS = hit.collider.gameObject.GetComponent<MeteorScript>();
+                        window wdS = hit.collider.gameObject.GetComponent<window>();
+                        if (mtS)
                             mtS.laserCollide();
-                        }
+                        if (wdS)
+                            wdS.laserCollide();
                         Destroy(hit.collider.gameObject);
                     }
                     if (hit.collider.gameObject.tag == "Enemy")
