@@ -22823,7 +22823,7 @@ GameObject:
   - component: {fileID: 1047401834}
   - component: {fileID: 1047401833}
   - component: {fileID: 1047401832}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Window_1
   m_TagString: Window
   m_Icon: {fileID: 0}
