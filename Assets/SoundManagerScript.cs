@@ -77,7 +77,7 @@ public class SoundManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(boomerDieSound);
                 break;
             case "meteor":
-                audioSrc.volume = 0.1f;
+                audioSrc.volume = 0.08f;
                 audioSrc.PlayOneShot(meteorSound);
                 break;
             case "speed up":
@@ -87,6 +87,7 @@ public class SoundManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(slowDownSound);
                 break;
             case "reload":
+                audioSrc.volume = 0.05f;
                 audioSrc.PlayOneShot(reloadSound);
                 break;
             case "jump":
@@ -117,9 +118,11 @@ public class SoundManagerScript : MonoBehaviour
                 audioSrc.PlayOneShot(playerDieSound);
                 break;
             case "glass break":
+                audioSrc.volume = 0.06f;
                 audioSrc.PlayOneShot(glassBreakSound);
                 break;
             case "heart pickup":
+                audioSrc.volume = 0.3f;
                 audioSrc.PlayOneShot(heartPickupSound);
                 break;
         }
