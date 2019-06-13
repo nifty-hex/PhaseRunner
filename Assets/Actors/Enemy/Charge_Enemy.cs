@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Charge_Enemy : MonoBehaviour
+public class Charge_Enemy : MonoBehaviour, EnemyInterface
 {
     private Rigidbody2D rigidBody;
     public int hp;
@@ -26,19 +26,20 @@ public class Charge_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckMove();
+        CheckHealth();
+        CheckDrop();
+        CheckStuck();
+    }
+
+    public void CheckMove() {
         if (rigidBody.velocity.x > speed_limit)
         {
             rigidBody.AddForce(new Vector2(-speed, 0), ForceMode2D.Impulse);
         }
-        if (rigidBody.velocity.x == 0)
-        {
-            en_spawn.number_of_enemies--;
-            Destroy(gameObject);
-        }
     }
 
-    void FixedUpdate()
-    {
+    public void CheckHealth() {
         if (hp <= 0)
         {
             en_spawn.number_of_enemies--;
@@ -47,6 +48,18 @@ public class Charge_Enemy : MonoBehaviour
             SoundManagerScript.PlaySound("Explosion");
             Destroy(gameObject);
         }
+    }
+
+    public void CheckStuck() {
+        if (rigidBody.velocity.x == 0)
+        {
+            en_spawn.number_of_enemies--;
+            SoundManagerScript.PlaySound("Explosion");
+            Destroy(gameObject);
+        }
+    }
+
+    public void CheckDrop() {
         if (drop_item.will_drop)
         {
             drop_item.spawn_point.position = transform.position;
@@ -62,12 +75,14 @@ public class Charge_Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player_Bullet" || collision.gameObject.tag == "Obstacles")
         {
             hp--;
+            SoundManagerScript.PlaySound("Explosion");
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
         {
             Instantiate(enemyExplosion, transform.position, transform.rotation);
             en_spawn.number_of_enemies--;
+            SoundManagerScript.PlaySound("Explosion");
             Destroy(gameObject);
         }
     }
