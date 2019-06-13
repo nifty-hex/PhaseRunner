@@ -9,6 +9,7 @@ public class Progession : MonoBehaviour
     public Player_Score score;
     public Drop_Items dr_i;
     public Player_Move pl_m;
+    public Enemy_Spawn en_type;
 
     public float spawn_ref = 10f;
     public int mt_cooldown = 10; //reduce for faste
@@ -44,7 +45,7 @@ public class Progession : MonoBehaviour
         pl_m.high_speed_limit += Time.deltaTime * faster_speed;
         pl_m.low_speed_limit += Time.deltaTime * faster_speed;
         pl_m.speed_limit += Time.deltaTime * faster_speed;
-        if (en_spawn.spawn_type != 8)
-            en_spawn.spawn_type++;
+        if (en_type.spawn_type != 8)
+            en_type.spawn_type++;
     }
 }
