@@ -46901,6 +46901,11 @@ PrefabInstance:
       propertyPath: fireRate
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 968299882240526821, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
+        type: 3}
+      propertyPath: lazer
+      value: 
+      objectReference: {fileID: 2100000, guid: 11b17a3a065fa864c9f1f3e32e69971f, type: 2}
     - target: {fileID: 968299880967968965, guid: 301e9fde17d676e49bfe686f6dbe7e4f,
         type: 3}
       propertyPath: railgun_ammo

@@ -16,6 +16,7 @@ public class Player_shoot : MonoBehaviour
     public Sprite gun1;
     public Sprite gun2;
     public Sprite gun3;
+    public Material lazer;
     private Sprite curGun;
     public float fireRate = 0.5f;
     public int gunType;
@@ -43,7 +44,8 @@ public class Player_shoot : MonoBehaviour
         line.enabled = false;
         laserTime = 0;
         line.useWorldSpace = true;
-        //line.material.color = Color.magenta;
+        if (lazer)
+            line.material = lazer;
         line.startWidth = 0.1f;
         line.endWidth = 0.1f;
     }
@@ -262,12 +264,17 @@ public class Player_shoot : MonoBehaviour
                     if (hit.collider.gameObject.tag == "Obstacles" || hit.collider.gameObject.tag == "Enemy_Bullet")
                     {
                         MeteorScript mtS = hit.collider.gameObject.GetComponent<MeteorScript>();
-                        window wdS = hit.collider.gameObject.GetComponent<window>();
+
+
                         if (mtS)
                             mtS.laserCollide();
-                        if (wdS)
-                            wdS.laserCollide();
                         Destroy(hit.collider.gameObject);
+                        
+                    }
+                    if (hit.collider.gameObject.tag == "Window")
+                    {
+                        window wdS = hit.collider.gameObject.GetComponent<window>();
+                        wdS.laserCollide();
                     }
                     if (hit.collider.gameObject.tag == "Enemy")
                     {
