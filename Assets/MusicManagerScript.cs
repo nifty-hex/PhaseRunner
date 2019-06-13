@@ -11,8 +11,8 @@ public class MusicManagerScript : MonoBehaviour
     public float pitch = 1.0f;
     private GameObject[] getCount;
     private static bool changeMusic = true;
-    private static int hardScoreThreshold = 200;
-    private static int extremeScoreThreshold = 400;
+    private static int hardScoreThreshold = 600;
+    private static int extremeScoreThreshold = 1200;
 
     private void Awake()
     {
