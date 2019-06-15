@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Common_Enemy : MonoBehaviour
+public class Common_Enemy : MonoBehaviour, All_Enemy
 {
     public int hp;
     public float x_speed;
@@ -99,4 +99,19 @@ public class Common_Enemy : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    public void Kill()
+    {
+
+    }
+
+    public void Damage(int damageTaken)
+    {
+
+    }
+
+    public void DropItem()
+    {
+
+    }
+
 }

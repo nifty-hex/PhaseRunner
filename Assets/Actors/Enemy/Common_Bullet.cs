@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Common_Bullet : MonoBehaviour
+public class Common_Bullet : MonoBehaviour, IKillable
 {
     public GameObject bulletExplosion;
     private GameObject player_offset;
@@ -46,6 +46,10 @@ public class Common_Bullet : MonoBehaviour
     void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+    public void Kill()
+    {
+
     }
 }
 

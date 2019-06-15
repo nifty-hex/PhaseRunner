@@ -264,12 +264,9 @@ public class Player_shoot : MonoBehaviour
                     if (hit.collider.gameObject.tag == "Obstacles" || hit.collider.gameObject.tag == "Enemy_Bullet")
                     {
                         MeteorScript mtS = hit.collider.gameObject.GetComponent<MeteorScript>();
-
-
                         if (mtS)
                             mtS.laserCollide();
                         Destroy(hit.collider.gameObject);
-                        
                     }
                     if (hit.collider.gameObject.tag == "Window")
                     {
