@@ -11,47 +11,45 @@ public class Item_Pickup : MonoBehaviour
     public int shotgun_ammo;
     public int railgun_ammo;
 
+    private AudioManager audiomanager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Health(Clone)")
         {
-            if (play_health.health < 3)
+            if (play_health.health < 3 && !play_health.die)
             {
                 play_health.health++;
             }
-            SoundManagerScript.PlaySound("heart pickup");
+            audiomanager.Play("Player_Heart");
             Destroy(collision.gameObject);
         }
         if (collision.gameObject.name == "Ammo(Clone)")
         {
 
             play_shoot.ammo[1] += machine_gun_ammo;
-            if (play_shoot.ammo[1] > 200)
+            if (play_shoot.ammo[1] > play_shoot.maxAmmo(1))
             {
-                play_shoot.ammo[1] = 200;
+                play_shoot.ammo[1] = play_shoot.maxAmmo(1);
             }
             play_shoot.ammo[2] += shotgun_ammo;
-            if (play_shoot.ammo[2] > 50)
+            if (play_shoot.ammo[2] > play_shoot.maxAmmo(2))
             {
-                play_shoot.ammo[2] = 50;
+                play_shoot.ammo[2] = play_shoot.maxAmmo(1);
             }
             play_shoot.ammo[3] += railgun_ammo;
+            if (play_shoot.ammo[3] > play_shoot.maxAmmo(3))
+            {
+                play_shoot.ammo[3] = play_shoot.maxAmmo(3);
+            }
 
-	    SoundManagerScript.PlaySound("reload");
-            //play_shoot.ammo[3] += railgun_ammo;
-            
+            audiomanager.Play("Player_Ammo");
             Destroy(collision.gameObject);
         }
         

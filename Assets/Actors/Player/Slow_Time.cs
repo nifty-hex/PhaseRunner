@@ -2,109 +2,98 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slow_Time : MonoBehaviour {
-
-    public float time_scale_tracker;
-    public float time_slowness;
-    public float time_fix_mul;
-    public float time_restore_speed;
-    public float time_loss_speed;
-    public float time_slow_limit;
-    public float normal_time_slow_limit;
-    public bool over_limit;
-    public bool is_time_slow;
-    public bool slow_sound_played = false;
-    public bool speed_sound_played = false;
-
-    public float current_alpha = 0;
-    public float bw_alpha = 0.5f;
-    public float standard_alpha = 0;
-    public float change_speed;
+public class Slow_Time : MonoBehaviour
+{
+    private bool slowed = false;
+    public float how_slow = 0.5f;
+    public float restore_speed = 0.4f;
+    public float loss_speed = 1f;
+    private float time_slow_amount_left;
+    public float time_slow_capacity;
+    private bool over_limit;
+    private bool soundPlayed = false;
+    private float bw_alpha = 0.2f;
+    private float standard_alpha = 0f;
+    private float change_speed = 0.01f;
     public GameObject bg;
-    public float bg_y_offset;
+    private float bg_y_offset = 6.62f;
+    private AudioManager audiomanager;
+    private InputManager inputmanager;
+    private PauseGame pausegame;
     Color tmp;
 
-    // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        inputmanager = GameObject.Find("InputManager").GetComponent<InputManager>();
+        pausegame = GameObject.Find("SettingsBorder").GetComponent<PauseGame>();
         bg.transform.position = new Vector3(bg.transform.position.x, bg_y_offset, bg.transform.position.z);
-        normal_time_slow_limit = time_slow_limit;
+        time_slow_amount_left = time_slow_capacity;
         tmp = bg.GetComponent<SpriteRenderer>().color;
         tmp.a = 0;
         bg.GetComponent<SpriteRenderer>().color = tmp;
     }
 	
-	// Update is called once per frame
-	void Update () {
-        time_scale_tracker = Time.timeScale;
-        if (WrapInput.TimeSlow(time_slow_limit, over_limit))// && time_slow_limit > 0 && over_limit == false)
+	void Update ()
+    {
+        if (!pausegame.isPaused())
         {
-            time_slow_limit -= (Time.deltaTime * time_loss_speed);
-            is_time_slow = true;
-            if (Time.timeScale > time_slowness)
+            if (inputmanager.TimeSlow() && time_slow_amount_left > 0 && over_limit == false)
             {
-                Time.timeScale -= (Time.deltaTime * time_fix_mul);
-                
-                /*
-                tmp.a = bw_alpha;
-                bg.GetComponent<SpriteRenderer>().color = tmp;
-                */
-            }
-        }
-        else
-        {
-            is_time_slow = false;
-            if (Time.timeScale < 1.0f)
-            {
-                Time.timeScale += (Time.deltaTime * time_fix_mul);
-                
-                /*
-                tmp.a = standard_alpha;
-                bg.GetComponent<SpriteRenderer>().color = tmp;
-                */
-            }
-        }
+                slowed = true;
+                time_slow_amount_left -= (Time.deltaTime * loss_speed);
+                Time.timeScale = how_slow;
+                if (!soundPlayed)
+                {
+                    audiomanager.Play("Time_Down");
+                    soundPlayed = true;
+                }
 
-        if (is_time_slow)
-        {
-            if (slow_sound_played == false)
-            {
-                SoundManagerScript.PlaySound("slow down");
-                slow_sound_played = true;
-                Debug.Log("eeee");
-                GameObject.Find("MusicManager").GetComponent<MusicManagerScript>().pitch = 0.5f;
-                GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().pitch = 0.5f;
+                tmp = bg.GetComponent<SpriteRenderer>().color;
+                if (tmp.a < bw_alpha)
+                {
+                    tmp.a += change_speed;
+                }
+                bg.GetComponent<SpriteRenderer>().color = tmp;
             }
+            else
+            {
+                slowed = false;
+                Time.timeScale = 1f;
+                if (soundPlayed)
+                {
+                    audiomanager.Play("Time_Up");
+                    soundPlayed = false;
+                }
+                tmp = bg.GetComponent<SpriteRenderer>().color;
+                if (tmp.a > standard_alpha)
+                {
+                    tmp.a -= change_speed;
+                }
+                bg.GetComponent<SpriteRenderer>().color = tmp;
+            }
+        }
         
-            tmp = bg.GetComponent<SpriteRenderer>().color;
-            if (tmp.a < bw_alpha)
-            {
-                tmp.a += change_speed;
-            }
-            bg.GetComponent<SpriteRenderer>().color = tmp;
-        }
-        else
-        {
-            tmp = bg.GetComponent<SpriteRenderer>().color;
-            if(slow_sound_played)
-            {
-                SoundManagerScript.PlaySound("speed up");
-                slow_sound_played = false;
-                GameObject.Find("MusicManager").GetComponent<MusicManagerScript>().pitch = 1.0f;
-                GameObject.Find("SoundManager").GetComponent<SoundManagerScript>().pitch = 1.0f;
-            }
-            if (tmp.a > standard_alpha)
-            {
-                tmp.a -= change_speed;
-            }
-            bg.GetComponent<SpriteRenderer>().color = tmp;
-        }
-
-        if (time_slow_limit < normal_time_slow_limit)
-            time_slow_limit += Time.deltaTime * time_restore_speed;
-        if (time_slow_limit < 0)
+        if (time_slow_amount_left < time_slow_capacity)
+            time_slow_amount_left += Time.deltaTime * restore_speed;
+        if (time_slow_amount_left < 0)
             over_limit = true;
-        if (time_slow_limit >= normal_time_slow_limit)
+        if (time_slow_amount_left >= time_slow_capacity)
             over_limit = false;
-        current_alpha = tmp.a;
+    }
+
+    public float getCurrentAmountLeft()
+    {
+        return time_slow_amount_left;
+    }
+
+    public float getCapacity()
+    {
+        return time_slow_capacity;
+    }
+
+    public bool isSlowed()
+    {
+        return slowed;
     }
 }

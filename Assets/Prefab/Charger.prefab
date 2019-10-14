@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5118922387325412590}
   - component: {fileID: 5118922387325412576}
   - component: {fileID: 5118922387325412577}
+  - component: {fileID: 4066586465997235762}
   - component: {fileID: 5118922387325412579}
   m_Layer: 18
   m_Name: Charger
@@ -119,6 +120,22 @@ CircleCollider2D:
   m_Offset: {x: -0.090989776, y: -0.047042646}
   serializedVersion: 2
   m_Radius: 0.25154558
+--- !u!58 &4066586465997235762
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5118922387325412581}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.090989776, y: -0.047042646}
+  serializedVersion: 2
+  m_Radius: 0.25154558
 --- !u!114 &5118922387325412579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 130593da760376e479f5871515b28dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
+  hp: 6
   speed: 0.6
   speed_limit: -5
   jump_force: 12
-  enemyExplosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
+  enemyExplosion: {fileID: 6083589841554044382, guid: a29819a6a8968704c8df433c669af2ad,
     type: 3}

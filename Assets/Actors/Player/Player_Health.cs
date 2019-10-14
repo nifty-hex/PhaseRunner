@@ -16,10 +16,16 @@ public class Player_Health : MonoBehaviour {
     public float change_speed;
     public float bg_y_offset;
     Color tmp;
-    bool die = false;
+    public bool die = false;
 
     public float time_till_scene_change = 3f;
     public Player_Score scoreObject;
+    private AudioManager audiomanager;
+
+    private void Start()
+    {
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+    }
 
     void Update () {
 		if (health <= 0)
@@ -34,7 +40,7 @@ public class Player_Health : MonoBehaviour {
 
             if (die == false)
             {
-                SoundManagerScript.PlaySound("player die");
+                audiomanager.Play("Player_Die");
                 tmp = Color.red;
                 tmp.a = 0;
                 die = true;
@@ -54,10 +60,16 @@ public class Player_Health : MonoBehaviour {
                 }
                 else
                 {
+                    audiomanager.StopAll();
+                    PlayerPrefs.SetInt("CurrentScore", scoreObject.getScore());
+                    if (scoreObject.getScore() > PlayerPrefs.GetInt("HighScore", 0))
+                    {
+                        PlayerPrefs.SetInt("HighScore", scoreObject.getScore());
+                    }
                     SceneManager.LoadScene("GameOver");
-                    var filetxt = File.CreateText("ScoreData.txt");
+                    /*var filetxt = File.CreateText("ScoreData.txt");
                     filetxt.WriteLine(scoreObject.getScore());
-                    filetxt.Close();
+                    filetxt.Close();*/
                 }
             }
         }
@@ -69,9 +81,10 @@ public class Player_Health : MonoBehaviour {
         {
             if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Enemy_Bullet" || collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Window")
             {
-                SoundManagerScript.PlaySound("hurt sound");
+                audiomanager.Play("Player_Hit");
                 health--;
                 i_frame.invin = true;
+                Handheld.Vibrate();
             }
         }
         if (collision.gameObject.tag == "Enemy_Bullet")
@@ -84,12 +97,12 @@ public class Player_Health : MonoBehaviour {
     {
         if (i_frame.invin == false)
         {
-            if (collision.gameObject.tag == "Enemy_Bullet")
+            if (collision.gameObject.tag == "Enemy_Bullet" || collision.gameObject.tag == "Window")
             {
                 health--;
-                SoundManagerScript.PlaySound("hurt sound");
+                audiomanager.Play("Player_Hit");
                 i_frame.invin = true;
-                Debug.Log("Ouch");
+                Handheld.Vibrate();
             }
         }
     }

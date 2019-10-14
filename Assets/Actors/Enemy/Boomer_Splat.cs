@@ -7,22 +7,10 @@ public class Boomer_Splat : MonoBehaviour
 
     public GameObject shockwave;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
-            SoundManagerScript.PlaySound("boomer bomb");
             Instantiate(shockwave, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
