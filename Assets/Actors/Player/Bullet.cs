@@ -11,10 +11,12 @@ public class Bullet : MonoBehaviour
     public float rotateSpeed = 400f;
     public int bulletType = 0; //1 home, 2 explode (explode is dangerous)
     public GameObject bulletExplode;
+    private AudioManager audiomanager;
 
     // Use this for initialization
     void Start()
     {
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         rb2d = GetComponent<Rigidbody2D>();
         Vector3 copy = rb2d.velocity;
         copy += transform.right * speed;
@@ -53,24 +55,42 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Enemy_Bullet")
+        if (collision.gameObject.tag == "Obstacles" || collision.gameObject.tag == "Ground")
+        {
+            audiomanager.Play("Ground_Hit");
+        }
+        else if (collision.gameObject.tag == "Window")
+        {
+            audiomanager.Play("Window_Hit");
+        }
+
+        if (collision.gameObject.tag == "Obstacles")
         {
             Destroy(collision.gameObject);
+            audiomanager.Play("PlaceHolderExplosion");
+        }
+        else if (collision.gameObject.tag == "Enemy_Bullet")
+        {
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.tag != "Player_Bullet")
+        {
+            Destroy(gameObject);
+        }
+        GameObject currentExplosion = Instantiate(bulletExplode, transform.position, transform.rotation);
+        currentExplosion.transform.localScale = new Vector3(2f, 2f, 2f);
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Window")
+        {
+            audiomanager.Play("Window_Hit");
         }
         GameObject currentExplosion = Instantiate(bulletExplode, transform.position, transform.rotation);
         currentExplosion.transform.localScale = new Vector3(2f, 2f, 2f);
         Destroy(gameObject);
-
-        /*if (bulletType == 2)
-        {
-            for (int a = 0; a < 8; a++)
-            {
-                GameObject bullet = Instantiate(this.gameObject, transform.position, transform.rotation);
-                Bullet_Script bulletScript = bullet.GetComponent<Bullet_Script>();
-                bulletScript.bulletType = 0;
-                bullet.GetComponent<Rigidbody2D>().rotation += a * (360 / 8);
-            }
-        }*/
     }
 
     public GameObject FindClosestEnemy()

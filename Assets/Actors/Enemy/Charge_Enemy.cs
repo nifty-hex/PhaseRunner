@@ -11,13 +11,14 @@ public class Charge_Enemy : MonoBehaviour, EnemyInterface
     public float jump_force;
     public GameObject enemyExplosion;
 
-
+    private AudioManager audiomanager;
     private Enemy_Spawn en_spawn;
     private Drop_Items drop_item;
 
     // Start is called before the first frame update
     void Start()
     {
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         rigidBody = GetComponent<Rigidbody2D>();
         en_spawn = GameObject.Find("Main Camera").GetComponent<Enemy_Spawn>();
         drop_item = GameObject.Find("Item_Spawn").GetComponent<Drop_Items>();
@@ -45,7 +46,7 @@ public class Charge_Enemy : MonoBehaviour, EnemyInterface
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
             drop_item.will_drop = true;
-            SoundManagerScript.PlaySound("Explosion");
+            audiomanager.Play("PlaceHolderExplosion");
             Destroy(gameObject);
         }
     }
@@ -54,7 +55,7 @@ public class Charge_Enemy : MonoBehaviour, EnemyInterface
         if (rigidBody.velocity.x == 0)
         {
             en_spawn.number_of_enemies--;
-            SoundManagerScript.PlaySound("Explosion");
+            audiomanager.Play("PlaceHolderExplosion");
             Destroy(gameObject);
         }
     }
@@ -75,15 +76,23 @@ public class Charge_Enemy : MonoBehaviour, EnemyInterface
         if (collision.gameObject.tag == "Player_Bullet" || collision.gameObject.tag == "Obstacles")
         {
             hp--;
-            SoundManagerScript.PlaySound("Explosion");
-            Destroy(collision.gameObject);
+            audiomanager.Play("Enemy_Hit");
         }
         if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
         {
             Instantiate(enemyExplosion, transform.position, transform.rotation);
             en_spawn.number_of_enemies--;
-            SoundManagerScript.PlaySound("Explosion");
+            audiomanager.Play("PlaceHolderExplosion");
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player_Bullet")
+        {
+            hp--;
+            audiomanager.Play("Enemy_Hit");
         }
     }
 }

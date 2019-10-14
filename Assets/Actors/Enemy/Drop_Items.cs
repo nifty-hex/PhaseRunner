@@ -11,12 +11,6 @@ public class Drop_Items : MonoBehaviour
     public Transform spawn_point;
     public int drop_item_chance; //That value out of 100;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

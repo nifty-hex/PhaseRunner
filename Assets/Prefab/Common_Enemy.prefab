@@ -131,7 +131,7 @@ MonoBehaviour:
   x_speed_limit: 8
   y_speed: 0.5
   bullet: {fileID: 996843609656873469, guid: 853b96d87c6ca1b42b070486b1aaaeff, type: 3}
-  enemyExplosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
+  enemyExplosion: {fileID: 6083589841554044382, guid: a29819a6a8968704c8df433c669af2ad,
     type: 3}
   enemyFlash: {fileID: 1529778645200042479, guid: 7f66d210a105e004b8dda91217c7d11f,
     type: 3}
@@ -170,7 +170,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1.2903677
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

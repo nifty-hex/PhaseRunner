@@ -11,6 +11,13 @@ TagManager:
   - Enemy_Bullet
   - Item_Pickup
   - Obstacles
+  - Wall
+  - Firewall
+  - Banners
+  - Charger_Jump_Point
+  - Window
+  - Ground
+  - music
   layers:
   - Default
   - TransparentFX
@@ -47,4 +54,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2946938061
     locked: 0

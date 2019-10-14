@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8492467396979146362}
   - component: {fileID: 8492467396979146360}
   - component: {fileID: 8492467396979146361}
+  - component: {fileID: 3084648286533837161}
   - component: {fileID: 8492467396979146363}
   - component: {fileID: 3040420036357763094}
   m_Layer: 11
@@ -49,10 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splatters: {fileID: 6292453372332451355, guid: 717c8c0be6e9c5f41bcab26177710f2f,
     type: 3}
-  enemyExplosion: {fileID: 8144795473763766075, guid: 9d9f7ccc9b989e04ba6fb627fc893bf6,
+  enemyExplosion: {fileID: 6083589841554044382, guid: a29819a6a8968704c8df433c669af2ad,
     type: 3}
   max_splatters: 5
-  hp: 3
+  hp: 6
   x_speed: 0.5
   x_speed_limit: 7.5
   y_speed: 0.5
@@ -116,6 +117,22 @@ CircleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.00000011920929}
+  serializedVersion: 2
+  m_Radius: 0.6915413
+--- !u!58 &3084648286533837161
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492467396979146367}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.00000011920929}

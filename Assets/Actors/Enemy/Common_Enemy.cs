@@ -25,15 +25,18 @@ public class Common_Enemy : MonoBehaviour, EnemyInterface
     private Enemy_Spawn en_spawn;
     private Drop_Items drop_item;
 
+    private AudioManager audiomanager;
 
     // Start is called before the first frame update
     void Start()
     {
+        audiomanager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         player = GameObject.Find("Player");
         en_spawn = GameObject.Find("Main Camera").GetComponent<Enemy_Spawn>();
         drop_item = GameObject.Find("Item_Spawn").GetComponent<Drop_Items>();
         fireRateTime = 0;
         rigidBody = GetComponent<Rigidbody2D>();
+        audiomanager.Play("Common_Idle");
     }
 
     // Update is called once per frame
@@ -64,7 +67,7 @@ public class Common_Enemy : MonoBehaviour, EnemyInterface
         {
             Instantiate(bullet, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation);
             Instantiate(enemyFlash, flashSpawnPoint.transform.position, flashSpawnPoint.transform.rotation);
-            SoundManagerScript.PlaySound("super pew");
+            audiomanager.Play("Common_Shoot");
             fireRateTime = 0;
         }
     }
@@ -75,7 +78,8 @@ public class Common_Enemy : MonoBehaviour, EnemyInterface
             en_spawn.number_of_enemies--;
             Instantiate(enemyExplosion, transform.position, transform.rotation);
             drop_item.will_drop = true;
-            SoundManagerScript.PlaySound("Explosion");
+            audiomanager.Play("PlaceHolderExplosion");
+            audiomanager.Stop("Common_Idle");
             Destroy(gameObject);
         }
     }
@@ -115,9 +119,17 @@ public class Common_Enemy : MonoBehaviour, EnemyInterface
     {
         if (collision.gameObject.tag == "Player_Bullet")
         {
+            audiomanager.Play("Enemy_Hit");
             hp--;
-            SoundManagerScript.PlaySound("Explosion");
-            Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player_Bullet")
+        {
+            audiomanager.Play("Enemy_Hit");
+            hp--;
         }
     }
 }

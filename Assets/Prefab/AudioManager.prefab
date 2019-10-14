@@ -1,0 +1,228 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3376770874592163191
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3376770874592163193}
+  - component: {fileID: 3376770874592163192}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3376770874592163193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376770874592163191}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3376770874592163192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376770874592163191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30a54989995b7d47967ec59d496db4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BGM_Theme
+    clip: {fileID: 8300000, guid: 4f9a3651e267e9f49bd3bcda64828cbc, type: 3}
+    volume: 0.4
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: BGM_Easy
+    clip: {fileID: 8300000, guid: d858e12e6d08961488f1ea616e366f92, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: BGM_Hard
+    clip: {fileID: 8300000, guid: e0d0d88038ad01246aac09eaadfa4561, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: BGM_Extreme
+    clip: {fileID: 8300000, guid: 6d99ec7f373f6af48b8745720341de9d, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: MouseOverButton
+    clip: {fileID: 8300000, guid: 561586ee2bbbb304a91c73105fd35e05, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Hit
+    clip: {fileID: 8300000, guid: 7902d5c2ebde62f4ba2ba671d47f54b6, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Jump
+    clip: {fileID: 8300000, guid: 76aa0f1cb6b1f3d419505098ffa902d2, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Die
+    clip: {fileID: 8300000, guid: a620454f5741b4a41a18b59af853b0a1, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Ammo
+    clip: {fileID: 8300000, guid: 441510f145d35c947b977f274af1873b, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gun_Pistol
+    clip: {fileID: 8300000, guid: 63866e208440968418b3796ad775eed1, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gun_Machine
+    clip: {fileID: 8300000, guid: 40128606a3d492c46913a8b28c472113, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gun_Shotgun
+    clip: {fileID: 8300000, guid: 4d8b5a72772658748a6ef8ce83e995a3, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Heart
+    clip: {fileID: 8300000, guid: 22a247c1e25874f4cabd2502d6a9dfc4, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Enemy_Hit
+    clip: {fileID: 8300000, guid: 298a2681219c4bc47ab7997c62ddf15f, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Window_Hit
+    clip: {fileID: 8300000, guid: 507b24931fe3f8b4e9be8cabd371b022, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Ground_Hit
+    clip: {fileID: 8300000, guid: c783bfc62db366b47904d63ccb06aa45, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Window_Break
+    clip: {fileID: 8300000, guid: b3c9c6e22221e644ebcda97f61cb9d8e, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Time_Down
+    clip: {fileID: 8300000, guid: c1aba9f1ad1a24f499e99bc3e4e1017c, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Time_Up
+    clip: {fileID: 8300000, guid: 5f99d484caa6ba9488e341d0509b902e, type: 3}
+    volume: 0.3
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: PlaceHolderExplosion
+    clip: {fileID: 8300000, guid: 515529f7fb988e84db9ee740a8cf0b8b, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Boomer_ReleaseShock
+    clip: {fileID: 8300000, guid: 72fab53c5baac764987fd50775aebe18, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Boomer_Idle
+    clip: {fileID: 8300000, guid: 2c7bf6f0f5621db4b8de9c616e27ff6e, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Meteor_Drop
+    clip: {fileID: 8300000, guid: 9b6b0291f43e46341b77d2772b33c78a, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Meteor_Burn
+    clip: {fileID: 8300000, guid: ea9eb03c34788004caa67511ddc7b793, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Common_Shoot
+    clip: {fileID: 8300000, guid: 6e84950bcee3a994987f5c3cb711c3d8, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Common_Idle
+    clip: {fileID: 8300000, guid: f5bb8adcf992d574abfb8fbcb521c66d, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MouseClick
+    clip: {fileID: 8300000, guid: 781842087cb41654e850b986e0ddf349, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gun_Rail
+    clip: {fileID: 8300000, guid: a00410ab20480f74192b09d9ef21ffe1, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gun_Change
+    clip: {fileID: 8300000, guid: 56455aa4be1d27d4eb99f36250431bdc, type: 3}
+    volume: 0.2
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: PlaceHolderExplosion
+    clip: {fileID: 8300000, guid: 515529f7fb988e84db9ee740a8cf0b8b, type: 3}
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  SFXmultiplier: 0.5
+  BGMmultiplier: 0.5
